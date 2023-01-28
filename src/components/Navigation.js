@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import Done from "./Icons/Done.js";
 import Scroll from "./Icons/Scroll.js";
 import { ScreenReaderOnly } from "./ScreenReaderOnly.js";
+import Plus from "./Icons/Plus.js";
 
 const NavBar = styled.nav`
   background-color: var(--dark-bg-color);
@@ -31,20 +32,20 @@ export default function Navigation() {
         <Scroll />
         <ScreenReaderOnly>In Progress</ScreenReaderOnly>
       </StyledLink>
-      <Link
-        href="/solvedquests"
-        passHref
-        legacyBehavior
-        active={router.pathname === "/" ? "active" : ""}
+      <StyledLink
+        href="/addquest"
+        active={router.pathname === "/addquest" ? "active" : ""}
       >
-        <StyledLink
-          href="/solvedquests"
-          active={router.pathname === "/solvedquests" ? "active" : ""}
-        >
-          <Done />
-          <ScreenReaderOnly>Solved</ScreenReaderOnly>
-        </StyledLink>
-      </Link>
+        <Plus />
+        <ScreenReaderOnly>Add Quest</ScreenReaderOnly>
+      </StyledLink>
+      <StyledLink
+        href="/solvedquests"
+        active={router.pathname === "/solvedquests" ? "active" : ""}
+      >
+        <Done />
+        <ScreenReaderOnly>Solved</ScreenReaderOnly>
+      </StyledLink>
     </NavBar>
   );
 }
