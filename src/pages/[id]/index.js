@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router.js";
 import Link from "next/link.js";
 
-import Form from "@/components/Form.js";
 import Back from "@/components/Icons/Back.js";
 import QuestLabels from "@/components/QuestLabels.js";
 import { Underline } from "@/components/Underline.js";
@@ -52,6 +51,21 @@ export default function QuestDetails({ quests, updateQuestStatus }) {
       </Container>
       <h2>{selectedQuest.title}</h2>
       <p>{selectedQuest.description}</p>
+      <section>
+        <p>
+          {selectedQuest.isDone
+            ? "You solved this quest."
+            : " You have not solved this quest yet."}
+        </p>
+        <button
+          type="button"
+          onClick={() => updateQuestStatus(selectedQuest.id)}
+        >
+          Not true?
+        </button>
+        <button type="button">edit quest</button>
+        <button type="button">delete quest</button>
+      </section>
     </Article>
   );
 }
