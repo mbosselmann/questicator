@@ -1,6 +1,25 @@
 import { useState } from "react";
+import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import { Underline } from "./Underline.js";
+import Checked from "./Icons/Checked.js";
+import NotChecked from "./Icons/NotChecked.js";
+import { ScreenReaderOnly } from "./ScreenReaderOnly.js";
+
+const CheckboxInput = styled.input`
+  display: none;
+`;
+
+const Wrapper = styled.form`
+  height: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+`;
+
+const Label = styled.label`
+  display: inline-block;
+  position: relative;
+`;
 
 export default function Form({ isDone, updateQuestStatus }) {
   const [isChecked, setIsChecked] = useState(isDone);
@@ -12,16 +31,25 @@ export default function Form({ isDone, updateQuestStatus }) {
   }
 
   return (
-    <form aria-label="track if quest is done">
-      <input
+    <Wrapper
+      aria-label={
+        isChecked
+          ? "click if quest is not solved yet"
+          : "click if quest is solved"
+      }
+    >
+      <CheckboxInput
         type="checkbox"
         id={id}
         checked={isChecked}
         onChange={handleOnChange}
       />
-      <label htmlFor={id}>
-        <Underline>{isChecked ? "completed" : "not completed yet"}</Underline>
-      </label>
-    </form>
+      <Label htmlFor={id}>
+        {isChecked ? <Checked /> : <NotChecked />}
+        <ScreenReaderOnly>
+          {isChecked ? "solved" : "not solved yet"}
+        </ScreenReaderOnly>
+      </Label>
+    </Wrapper>
   );
 }

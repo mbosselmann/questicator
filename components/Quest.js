@@ -6,12 +6,16 @@ import { ScreenReaderOnly } from "./ScreenReaderOnly.js";
 ScreenReaderOnly;
 
 const Article = styled.article`
-  background-color: var(--light-bg-color);
-  padding: 0.5rem;
-  border-left: 0.5rem dashed var(--border-color);
-  border-right: 0.5rem dashed var(--border-color);
+  height: 100%;
   position: relative;
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: var(--light-bg-color);
+  border-left: 0.5rem dashed var(--border-color);
+  border-right: 0.5rem dashed var(--border-color);
 `;
 
 const StyledLink = styled.a`
@@ -27,10 +31,22 @@ const StyledLink = styled.a`
 `;
 
 const FormContainer = styled.div`
-  width: fit-content;
+  width: 1.5rem;
+  height: 100%;
   display: flex;
   isolation: isolate;
   z-index: 1;
+`;
+
+const Heading = styled.h2`
+  font-size: 1.2rem;
+`;
+
+const Section = styled.section`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 `;
 
 export default function Quest({
@@ -42,16 +58,20 @@ export default function Quest({
 }) {
   return (
     <Article>
-      <FormContainer>
-        <Form isDone={isDone} updateQuestStatus={updateQuestStatus} />
-      </FormContainer>
-      <h2>{title}</h2>
-      <QuestLabels labels={labels} />
-      <Link href={`${id}`} passHref legacyBehavior>
-        <StyledLink>
-          <ScreenReaderOnly>quest details</ScreenReaderOnly>
-        </StyledLink>
-      </Link>
+      <Section>
+        <FormContainer>
+          <Form isDone={isDone} updateQuestStatus={updateQuestStatus} />
+        </FormContainer>
+        <Heading>{title}</Heading>
+      </Section>
+      <div>
+        <QuestLabels labels={labels} />
+        <Link href={`${id}`} passHref legacyBehavior>
+          <StyledLink>
+            <ScreenReaderOnly>quest details</ScreenReaderOnly>
+          </StyledLink>
+        </Link>
+      </div>
     </Article>
   );
 }
