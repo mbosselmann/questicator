@@ -1,4 +1,4 @@
-import QuestList from "components/QuestList.js";
+import QuestList from "@/components/QuestList.js";
 
 export default function SolvedQuests({ quests, updateQuestStatus }) {
   const solvedQuests = quests.filter(({ isDone }) => isDone);

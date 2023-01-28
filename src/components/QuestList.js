@@ -1,4 +1,4 @@
-import Quest from "components/Quest.js";
+import Quest from "@/components/Quest.js";
 import styled from "styled-components";
 
 const List = styled.ul`

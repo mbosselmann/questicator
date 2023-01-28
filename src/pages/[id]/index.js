@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { useRouter } from "next/router.js";
 import Link from "next/link.js";
 
-import Form from "components/Form.js";
-import Back from "components/Icons/Back.js";
-import QuestLabels from "components/QuestLabels.js";
-import { Underline } from "components/Underline.js";
+import Form from "@/components/Form.js";
+import Back from "@/components/Icons/Back.js";
+import QuestLabels from "@/components/QuestLabels.js";
+import { Underline } from "@/components/Underline.js";
 
 const StyledLink = styled.a`
   display: flex;

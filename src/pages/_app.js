@@ -1,6 +1,7 @@
+import localFont from "@next/font/local";
 import { data } from "db.js";
 import { useImmerLocalStorageState } from "lib/hook/useImmerLocalStorageState.js";
-import Layout from "components/Layout.js";
+import Layout from "@/components/Layout.js";
 import GlobalStyle from "../styles.js";
 
 export default function App({ Component, pageProps }) {
