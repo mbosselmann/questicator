@@ -39,7 +39,7 @@ const FormContainer = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const Section = styled.section`
