@@ -52,10 +52,6 @@ export default function QuestDetails({ quests, updateQuestStatus }) {
       </Container>
       <h2>{selectedQuest.title}</h2>
       <p>{selectedQuest.description}</p>
-      <Form
-        isDone={selectedQuest.isDone}
-        updateQuestStatus={() => updateQuestStatus(selectedQuest.id)}
-      />
     </Article>
   );
 }
