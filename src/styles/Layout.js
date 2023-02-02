@@ -1,8 +1,11 @@
 import localFont from "@next/font/local";
 import styled from "styled-components";
-import Navigation from "./Navigation.js";
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/router.js";
 
-const risque = localFont({ src: "../fonts/risque-regular.ttf" });
+import Navigation from "../components/Navigation.js";
+
+const risque = localFont({ src: "../assets/fonts/risque-regular.ttf" });
 
 const GridWrapper = styled.div`
   height: 100vh;
@@ -25,10 +28,17 @@ const Headline = styled.h1`
 `;
 
 export default function Layout({ children }) {
+  const { pathname } = useRouter();
+  const scrollRef = useRef();
+
+  useEffect(() => {
+    scrollRef.current.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <GridWrapper>
       <Headline className={risque.className}>Questicator</Headline>
-      <Main>{children}</Main>
+      <Main ref={scrollRef}>{children}</Main>
       <Navigation />
     </GridWrapper>
   );
