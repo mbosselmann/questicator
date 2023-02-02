@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import Checked from "./Icons/Checked.js";
-import NotChecked from "./Icons/NotChecked.js";
-import { ScreenReaderOnly } from "./ScreenReaderOnly.js";
+import Checked from "../assets/Icons/Checked.js";
+import NotChecked from "../assets/Icons/NotChecked.js";
+import { ScreenReaderOnly } from "../styles/ScreenReaderOnly.js";
 
 const CheckboxInput = styled.input`
   display: none;
@@ -21,9 +21,14 @@ const Label = styled.label`
   position: relative;
 `;
 
-export default function Form({ isDone, updateQuestStatus }) {
+export default function CheckBoxForm({ isDone, updateQuestStatus }) {
   const [isChecked, setIsChecked] = useState(isDone);
-  const id = "isDone" + uuidv4();
+
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    setId("isDone" + uuidv4());
+  }, []);
 
   function handleOnChange() {
     setIsChecked(!isChecked);
