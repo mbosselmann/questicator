@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { data } from "db.js";
-import { useImmerLocalStorageState } from "lib/hook/useImmerLocalStorageState.js";
+import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState.js";
 import { v4 as uuidv4 } from "uuid";
 
 import Layout from "@/styles/Layout.js";
@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }) {
   const [quests, setQuests] = useImmerLocalStorageState("quests", {
     defaultValue: data,
   });
-  const [newQuestLabels, setNewQuestLabels] = useState(null);
 
   function updateQuestStatus(questId) {
     if (quests) {
@@ -44,36 +43,6 @@ export default function App({ Component, pageProps }) {
     setQuests(quests.filter((quest) => quest.id !== questId));
   }
 
-  function handleDisplayQuestLabels(labelName, labelValue) {
-    if (!newQuestLabels) {
-      if (labelName === "kindOfQuest") {
-        return setNewQuestLabels([
-          { id: uuidv4(), name: labelValue },
-          { id: uuidv4(), name: "none" },
-        ]);
-      } else {
-        return setNewQuestLabels([
-          { id: uuidv4(), name: "none" },
-          { id: uuidv4(), name: labelValue },
-        ]);
-      }
-    }
-
-    if (labelName === "kindOfQuest") {
-      setNewQuestLabels(
-        { ...newQuestLabels[0], name: labelValue },
-        newQuestLabels[1]
-      );
-    }
-
-    if (labelName === "priority") {
-      setNewQuestLabels(newQuestLabels[0], {
-        ...newQuestLabels[1],
-        name: labelValue,
-      });
-    }
-  }
-
   function addNote(note, questId) {
     setQuests(
       quests.map((quest) =>
@@ -95,8 +64,6 @@ export default function App({ Component, pageProps }) {
         editQuest={editQuest}
         deleteQuest={deleteQuest}
         addNote={addNote}
-        newQuestLabels={newQuestLabels}
-        onDisplayQuestLabels={handleDisplayQuestLabels}
       />
     </Layout>
   );

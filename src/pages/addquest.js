@@ -6,6 +6,7 @@ import QuestForm from "@/components/QuestForm.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import FormHeader from "@/components/FormHeader.js";
+import useQuestLabels from "@/lib/hook/useQuestLabels.js";
 
 const Wrapper = styled.div`
   background-color: var(--light-bg-color);
@@ -17,13 +18,10 @@ const ActionContainer = styled.div`
   gap: 0.3rem;
 `;
 
-export default function AddQuest({
-  addQuest,
-  newQuestLabels,
-  onDisplayQuestLabels,
-}) {
+export default function AddQuest({ addQuest, onDisplayQuestLabels }) {
   const [isNewQuestAdded, setIsNewQuestAdded] = useState(false);
   const [newQuestId, setNewQuestId] = useState("");
+  const [questLabels, handleQuestLabels] = useQuestLabels(selectedQuest.labels);
 
   function onSubmit(formData) {
     const { title, description } = formData;
@@ -31,7 +29,7 @@ export default function AddQuest({
       id: uuidv4(),
       title,
       description,
-      labels: newQuestLabels,
+      labels: questLabels,
       isDone: false,
     };
     addQuest(newQuest);
@@ -64,10 +62,10 @@ export default function AddQuest({
         </section>
       ) : (
         <>
-          <FormHeader title="Add a Quest" questLabels={newQuestLabels} />
+          <FormHeader title="Add a Quest" questLabels={questLabels} />
           <QuestForm
             onSubmit={onSubmit}
-            onDisplayQuestLabels={onDisplayQuestLabels}
+            onDisplayQuestLabels={handleQuestLabels}
           />
         </>
       )}

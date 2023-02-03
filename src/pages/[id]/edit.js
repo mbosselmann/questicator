@@ -1,18 +1,17 @@
 import { useRouter } from "next/router.js";
 
+import useQuestLabels from "@/lib/hook/useQuestLabels.js";
+
 import QuestForm from "@/components/QuestForm.js";
 import FormHeader from "@/components/FormHeader.js";
 import BackButton from "@/components/BackButton.js";
 
-export default function EditQuest({
-  quests,
-  editQuest,
-  newQuestLabels,
-  onDisplayQuestLabels,
-}) {
+export default function EditQuest({ quests, editQuest }) {
   const router = useRouter();
   const { id } = router.query;
   const selectedQuest = quests.find((quest) => quest.id === id);
+
+  const [questLabels, handleQuestLabels] = useQuestLabels(selectedQuest.labels);
 
   if (!selectedQuest) {
     return null;
@@ -24,7 +23,7 @@ export default function EditQuest({
       id: selectedQuest.id,
       title,
       description,
-      labels: newQuestLabels || selectedQuest.labels,
+      labels: questLabels || selectedQuest.labels,
       isDone: selectedQuest.isDone,
     };
     editQuest(updatedQuest);
@@ -36,11 +35,11 @@ export default function EditQuest({
       <BackButton />
       <FormHeader
         title="Add a Quest"
-        questLabels={newQuestLabels || selectedQuest.labels}
+        questLabels={questLabels || selectedQuest.labels}
       />
       <QuestForm
         onSubmit={onSubmit}
-        onDisplayQuestLabels={onDisplayQuestLabels}
+        onDisplayQuestLabels={handleQuestLabels}
         selectedQuest={selectedQuest}
       />
     </>
