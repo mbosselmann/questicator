@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { data } from "db.js";
 import { useImmerLocalStorageState } from "lib/hook/useImmerLocalStorageState.js";
-import Layout from "@/components/Layout.js";
+import { v4 as uuidv4 } from "uuid";
+
+import Layout from "@/styles/Layout.js";
 import GlobalStyle from "../styles.js";
 
 export default function App({ Component, pageProps }) {
   const [quests, setQuests] = useImmerLocalStorageState("quests", {
-    defaultValue: [],
+    defaultValue: data,
   });
+  const [newQuestLabels, setNewQuestLabels] = useState(null);
 
   function updateQuestStatus(questId) {
     if (quests) {
@@ -24,6 +28,79 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  function addQuest(newQuest) {
+    setQuests([newQuest, ...quests]);
+  }
+
+  function editQuest(updatedQuest) {
+    setQuests(
+      quests.map((quest) =>
+        quest.id === updatedQuest.id ? updatedQuest : quest
+      )
+    );
+  }
+
+  function deleteQuest(questId) {
+    setQuests(quests.filter((quest) => quest.id !== questId));
+  }
+
+  function handleDisplayQuestLabels(labelName, labelValue) {
+    if (!newQuestLabels) {
+      return setNewQuestLabels([{ id: uuidv4(), name: labelValue }]);
+    }
+
+    const isKindOfQuestSet =
+      newQuestLabels &&
+      (newQuestLabels[0].name === "protect" ||
+        newQuestLabels[0].name === "discovery" ||
+        newQuestLabels[0].name === "practice");
+
+    if (labelName === "kindOfQuest") {
+      if (!newQuestLabels[1] && isKindOfQuestSet) {
+        return setNewQuestLabels([{ ...newQuestLabels[0], name: labelValue }]);
+      }
+      if (!newQuestLabels[1] && !isKindOfQuestSet) {
+        return setNewQuestLabels([
+          { id: uuidv4(), name: labelValue },
+          newQuestLabels[0],
+        ]);
+      }
+      return setNewQuestLabels([
+        { id: uuidv4(), name: labelValue },
+        newQuestLabels[1],
+      ]);
+    }
+
+    if (labelName === "priority") {
+      if (
+        (!newQuestLabels[1] && newQuestLabels[0].name === "low-priority") ||
+        newQuestLabels[0].name === "high-priority"
+      ) {
+        return setNewQuestLabels([{ ...newQuestLabels[0], name: labelValue }]);
+      }
+      if (!newQuestLabels[1] && isKindOfQuestSet) {
+        return setNewQuestLabels([
+          newQuestLabels[0],
+          { id: uuidv4(), name: labelValue },
+        ]);
+      }
+      return setNewQuestLabels([
+        newQuestLabels[0],
+        { ...newQuestLabels[1], name: labelValue },
+      ]);
+    }
+  }
+
+  function addNote(note, questId) {
+    setQuests(
+      quests.map((quest) =>
+        quest.id === questId
+          ? { ...quest, notes: quest.notes ? [note, ...quest.notes] : [note] }
+          : quest
+      )
+    );
+  }
+
   return (
     <Layout>
       <GlobalStyle />
@@ -31,6 +108,12 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         quests={quests}
         updateQuestStatus={updateQuestStatus}
+        addQuest={addQuest}
+        editQuest={editQuest}
+        deleteQuest={deleteQuest}
+        addNote={addNote}
+        newQuestLabels={newQuestLabels}
+        onDisplayQuestLabels={handleDisplayQuestLabels}
       />
     </Layout>
   );
