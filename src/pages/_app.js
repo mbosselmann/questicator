@@ -46,48 +46,31 @@ export default function App({ Component, pageProps }) {
 
   function handleDisplayQuestLabels(labelName, labelValue) {
     if (!newQuestLabels) {
-      return setNewQuestLabels([{ id: uuidv4(), name: labelValue }]);
-    }
-
-    const isKindOfQuestSet =
-      newQuestLabels &&
-      (newQuestLabels[0].name === "protect" ||
-        newQuestLabels[0].name === "discovery" ||
-        newQuestLabels[0].name === "practice");
-
-    if (labelName === "kindOfQuest") {
-      if (!newQuestLabels[1] && isKindOfQuestSet) {
-        return setNewQuestLabels([{ ...newQuestLabels[0], name: labelValue }]);
-      }
-      if (!newQuestLabels[1] && !isKindOfQuestSet) {
+      if (labelName === "kindOfQuest") {
         return setNewQuestLabels([
           { id: uuidv4(), name: labelValue },
-          newQuestLabels[0],
+          { id: uuidv4(), name: "none" },
+        ]);
+      } else {
+        return setNewQuestLabels([
+          { id: uuidv4(), name: "none" },
+          { id: uuidv4(), name: labelValue },
         ]);
       }
-      return setNewQuestLabels([
-        { id: uuidv4(), name: labelValue },
-        newQuestLabels[1],
-      ]);
+    }
+
+    if (labelName === "kindOfQuest") {
+      setNewQuestLabels(
+        { ...newQuestLabels[0], name: labelValue },
+        newQuestLabels[1]
+      );
     }
 
     if (labelName === "priority") {
-      if (
-        (!newQuestLabels[1] && newQuestLabels[0].name === "low-priority") ||
-        newQuestLabels[0].name === "high-priority"
-      ) {
-        return setNewQuestLabels([{ ...newQuestLabels[0], name: labelValue }]);
-      }
-      if (!newQuestLabels[1] && isKindOfQuestSet) {
-        return setNewQuestLabels([
-          newQuestLabels[0],
-          { id: uuidv4(), name: labelValue },
-        ]);
-      }
-      return setNewQuestLabels([
-        newQuestLabels[0],
-        { ...newQuestLabels[1], name: labelValue },
-      ]);
+      setNewQuestLabels(newQuestLabels[0], {
+        ...newQuestLabels[1],
+        name: labelValue,
+      });
     }
   }
 
