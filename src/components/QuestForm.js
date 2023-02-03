@@ -131,6 +131,18 @@ export default function QuestForm({
               onChange={handleChange}
             />
           </li>
+          <li>
+            {selectedQuest && (
+              <RadioInput
+                id="none"
+                value="none"
+                name="priority"
+                labelText="None"
+                isChecked={selectedPriority === "none"}
+                onChange={handleChange}
+              />
+            )}
+          </li>
         </StyledList>
       </Fieldset>
       <StyledButton type="submit">
