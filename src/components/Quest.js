@@ -1,8 +1,8 @@
 import Link from "next/link.js";
 import styled from "styled-components";
-import Form from "./Form.js";
+import CheckboxForm from "./CheckboxForm.js";
 import QuestLabels from "./QuestLabels.js";
-import { ScreenReaderOnly } from "./ScreenReaderOnly.js";
+import { ScreenReaderOnly } from "../styles/ScreenReaderOnly.js";
 ScreenReaderOnly;
 
 const Article = styled.article`
@@ -38,7 +38,7 @@ const FormContainer = styled.div`
   z-index: 1;
 `;
 
-const Heading = styled.h2`
+const Heading = styled.h3`
   font-size: 1rem;
 `;
 
@@ -60,13 +60,13 @@ export default function Quest({
     <Article>
       <Section>
         <FormContainer>
-          <Form isDone={isDone} updateQuestStatus={updateQuestStatus} />
+          <CheckboxForm isDone={isDone} updateQuestStatus={updateQuestStatus} />
         </FormContainer>
         <Heading>{title}</Heading>
       </Section>
       <div>
         <QuestLabels labels={labels} />
-        <Link href={`${id}`} passHref legacyBehavior>
+        <Link href={`/${id}`} passHref legacyBehavior>
           <StyledLink>
             <ScreenReaderOnly>quest details</ScreenReaderOnly>
           </StyledLink>
