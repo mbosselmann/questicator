@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Cauldron from "./Icons/Cauldron.js";
-import High from "./Icons/High.js";
-import Low from "./Icons/Low.js";
-import Star from "./Icons/Star.js";
-import Wizard from "./Icons/Wizard.js";
+import Cauldron from "../assets/Icons/Cauldron.js";
+import High from "../assets/Icons/High.js";
+import Low from "../assets/Icons/Low.js";
+import Star from "../assets/Icons/Star.js";
+import Wizard from "../assets/Icons/Wizard.js";
 
 const LABELS_MAP = {
   practice: <Wizard />,
