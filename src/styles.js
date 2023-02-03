@@ -7,7 +7,7 @@ export default createGlobalStyle`
   --light-bg-color: #3E2C41;
   --border-color: #5C527F;
   --text-color: #EDEDE9;
-  --highlight: #6E85B2;
+  --highlighted: #6E85B2;
 }
 
   *,
