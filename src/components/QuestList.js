@@ -1,17 +1,9 @@
 import Quest from "@/components/Quest.js";
-import styled from "styled-components";
-
-const List = styled.ul`
-  list-style: none;
-  padding: 0 0 1rem 0;
-  display: grid;
-  gap: 0.8rem;
-  margin: 0;
-`;
+import { StyledList } from "@/styles/StyledList.js";
 
 export default function QuestList({ quests, updateQuestStatus }) {
   return (
-    <List role="list">
+    <StyledList>
       {quests.map((quest) => (
         <li key={quest.id}>
           <Quest
@@ -23,6 +15,6 @@ export default function QuestList({ quests, updateQuestStatus }) {
           />
         </li>
       ))}
-    </List>
+    </StyledList>
   );
 }
