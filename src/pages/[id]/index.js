@@ -1,36 +1,33 @@
 import styled from "styled-components";
 import { useRouter } from "next/router.js";
-import Link from "next/link.js";
 
-import Back from "@/components/Icons/Back.js";
+import BackButton from "@/components/BackButton.js";
 import QuestLabels from "@/components/QuestLabels.js";
-import { Underline } from "@/components/Underline.js";
-
-const StyledLink = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-color);
-  text-decoration: none;
-  width: fit-content;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-`;
+import { StyledLink } from "@/styles/StyledLink.js";
+import { StyledButton } from "@/styles/StyledButton.js";
+import QuestNotes from "@/components/QuestNotes.js";
 
 const Article = styled.article`
   background-color: var(--light-bg-color);
   padding: 0.5rem;
-  height: 100%;
 `;
 
-const Container = styled.section`
+const FlexContainer = styled.section`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
 `;
 
-export default function QuestDetails({ quests, updateQuestStatus }) {
+const GridContainer = styled.section`
+  display: grid;
+  gap: 0.5rem;
+`;
+
+export default function QuestDetails({
+  quests,
+  updateQuestStatus,
+  deleteQuest,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const selectedQuest = quests.find((quest) => quest.id === id);
@@ -39,33 +36,39 @@ export default function QuestDetails({ quests, updateQuestStatus }) {
     return null;
   }
 
+  function handleDelete() {
+    deleteQuest(selectedQuest.id);
+    router.back();
+  }
+
   return (
     <Article>
-      <Container>
-        <Link href="/" passHref legacyBehavior>
-          <StyledLink>
-            <Back /> <Underline>back</Underline>
-          </StyledLink>
-        </Link>
+      <FlexContainer>
+        <BackButton />
         <QuestLabels labels={selectedQuest.labels} size={"5rem"} />
-      </Container>
+      </FlexContainer>
       <h2>{selectedQuest.title}</h2>
       <p>{selectedQuest.description}</p>
-      <section>
+      {selectedQuest.notes && <QuestNotes notes={selectedQuest.notes} />}
+      <GridContainer>
         <p>
           {selectedQuest.isDone
             ? "You solved this quest."
             : " You have not solved this quest yet."}
         </p>
-        <button
+        <StyledButton
           type="button"
           onClick={() => updateQuestStatus(selectedQuest.id)}
         >
           Not true?
-        </button>
-        <button type="button">edit quest</button>
-        <button type="button">delete quest</button>
-      </section>
+        </StyledButton>
+        <h3>Your options:</h3>
+        <StyledLink href={`${selectedQuest.id}/edit`}>Edit quest</StyledLink>
+        <StyledLink href={`${selectedQuest.id}/addnote`}>Add note</StyledLink>
+        <StyledButton type="button" onClick={handleDelete}>
+          Delete quest
+        </StyledButton>
+      </GridContainer>
     </Article>
   );
 }
