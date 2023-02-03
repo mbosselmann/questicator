@@ -8,6 +8,12 @@ export default function Home({ quests, updateQuestStatus }) {
   }
 
   return (
-    <QuestList quests={unsolvedQuests} updateQuestStatus={updateQuestStatus} />
+    <>
+      <h2>Unsolved Quests</h2>
+      <QuestList
+        quests={unsolvedQuests}
+        updateQuestStatus={updateQuestStatus}
+      />
+    </>
   );
 }

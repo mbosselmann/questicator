@@ -8,6 +8,9 @@ export default function SolvedQuests({ quests, updateQuestStatus }) {
   }
 
   return (
-    <QuestList quests={solvedQuests} updateQuestStatus={updateQuestStatus} />
+    <>
+      <h2>Solved Quests</h2>
+      <QuestList quests={solvedQuests} updateQuestStatus={updateQuestStatus} />
+    </>
   );
 }
