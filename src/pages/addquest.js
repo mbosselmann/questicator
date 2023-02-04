@@ -18,10 +18,10 @@ const ActionContainer = styled.div`
   gap: 0.3rem;
 `;
 
-export default function AddQuest({ addQuest, onDisplayQuestLabels }) {
+export default function AddQuest({ addQuest }) {
   const [isNewQuestAdded, setIsNewQuestAdded] = useState(false);
   const [newQuestId, setNewQuestId] = useState("");
-  const [questLabels, handleQuestLabels] = useQuestLabels(selectedQuest.labels);
+  const [questLabels, handleQuestLabels] = useQuestLabels();
 
   function onSubmit(formData) {
     const { title, description } = formData;
