@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { data } from "db.js";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState.js";
-import { v4 as uuidv4 } from "uuid";
 
 import Layout from "@/styles/Layout.js";
-import GlobalStyle from "../styles.js";
+import GlobalStyle from "../style.js";
 
 export default function App({ Component, pageProps }) {
   const [quests, setQuests] = useImmerLocalStorageState("quests", {
