@@ -5,11 +5,7 @@ import { StyledButton } from "@/styles/StyledButton.js";
 import Textarea from "@/components/Textarea.js";
 import QuestNotes from "@/components/QuestNotes.js";
 import BackButton from "@/components/BackButton.js";
-
-const Form = styled.form`
-  display: grid;
-  gap: 1rem;
-`;
+import { StyledForm } from "@/styles/StyledForm.js";
 
 const Wrapper = styled.div`
   background-color: var(--light-bg-color);
@@ -34,10 +30,10 @@ export default function AddNotes({ quests, addNote }) {
     <Wrapper>
       <BackButton />
       <h2 id="add-note">Add Note</h2>
-      <Form aria-labelledby="add-note" onSubmit={handleSubmit}>
+      <StyledForm aria-labelledby="add-note" onSubmit={handleSubmit}>
         <Textarea id="note" name="note" labelText="Your Note" required />
         <StyledButton type="submit">Add</StyledButton>
-      </Form>
+      </StyledForm>
       {selectedQuest.notes && <QuestNotes notes={selectedQuest.notes} />}
     </Wrapper>
   );

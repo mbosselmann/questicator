@@ -6,11 +6,7 @@ import Textarea from "../components/Textarea.js";
 import RadioInput from "../components/RadioInput.js";
 import { StyledButton } from "../styles/StyledButton.js";
 import { StyledList } from "@/styles/StyledList.js";
-
-const Form = styled.form`
-  display: grid;
-  gap: 1rem;
-`;
+import { StyledForm } from "@/styles/StyledForm.js";
 
 const Fieldset = styled.fieldset`
   border: 5px solid var(--border-color);
@@ -54,7 +50,7 @@ export default function QuestForm({
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <TextInput
         id="title"
         name="title"
@@ -148,6 +144,6 @@ export default function QuestForm({
       <StyledButton type="submit">
         {selectedQuest ? "Update Quest" : "Add Quest"}
       </StyledButton>
-    </Form>
+    </StyledForm>
   );
 }
