@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledList = styled.ul.attrs((props) => ({
+export const StyledList = styled.ul.attrs(() => ({
   role: "list",
 }))`
   list-style: none;
