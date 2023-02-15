@@ -7,17 +7,34 @@ export const data = [
       { id: "05bec04c-b139-4424-a253-ee554db94bdf", name: "discovery" },
       { id: "eac02276-6a5b-40bc-9a38-3861ac379606", name: "low-priority" },
     ],
-    isDone: false,
+    isDone: true,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
+    notes: [
+      "Or may it be better to solve another quest first?",
+      "I hope I can handle this!",
+      "Try this out!",
+    ],
   },
   {
     id: "aa32416f-8e03-4325-bc8b-399f7a80512a",
     title: "Find the fairy floof!",
     description: "This one could be a tricky adventure.",
     labels: [
-      { id: "8c46b909-3d6d-40e5-8fa9-adfefcadded1", name: "protect" },
-      { id: "a8062775-70a5-4888-b7ae-c81f425ffede", name: "low-priority" },
+      { id: "f4625ed5-b8df-464e-8b91-f813b81c1c72", name: "practice" },
+      { id: "da450c86-8675-4351-be63-476725c38981", name: "none" },
     ],
     isDone: false,
+    location: {
+      name: "Hamburger Wollfabrik GmbH",
+      address: "Brandshofer Deich 48, 20539 Hamburg",
+      latitude: 53.53876439555081,
+      longitude: 10.030403098307378,
+    },
   },
   {
     id: "784fdeed-87cf-486c-b5be-744559b0585f",
@@ -28,10 +45,18 @@ export const data = [
       { id: "a8062775-70a5-4888-b7ae-c81f425ffede", name: "high-priority" },
     ],
     isDone: false,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
+
+    notes: ["Amazing!"],
   },
   {
     id: "1",
-    title: "Learn how to be the greatest wizward in the world!",
+    title: "Learn how to be the greatest wizard in the world!",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio iusto accusamus mollitia asperiores praesentium officia, quas aliquid quia corrupti, in excepturi velit magni illum alias eveniet odit placeat maiores voluptates.",
     labels: [
@@ -39,14 +64,33 @@ export const data = [
       { id: "2", name: "high-priority" },
     ],
     isDone: false,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
+
+    notes: [
+      "This might be a hard quest and may take longer than I think to solve.",
+    ],
   },
   {
     id: "2",
     title: "Drink a beer with the magic pig and fairy cat!",
     description:
-      "This will be an amazing opportunity to sell your handmade beer.",
-    labels: [{ id: "8ea7df4c-aeea-484d-abd2-1252ed02406b", name: "practice" }],
+      "This will be an amazing opportunity to sell your handmade beer. And maybe you will get something in return? ;)",
+    labels: [
+      { id: "4800e7ad-ed7b-42e4-92a3-def4481e9ab6", name: "discovery" },
+      { id: "9b949bb6-20cf-4d6e-8278-3ac5258a3e1d", name: "high-priority" },
+    ],
     isDone: false,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
   },
   {
     id: "3",
@@ -57,7 +101,13 @@ export const data = [
       { id: "1", name: "protect" },
       { id: "2", name: "high-priority" },
     ],
-    isDone: false,
+    isDone: true,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
   },
   {
     id: "4",
@@ -69,6 +119,12 @@ export const data = [
       { id: "2", name: "low-priority" },
     ],
     isDone: false,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
   },
   {
     id: "5",
@@ -77,5 +133,11 @@ export const data = [
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio iusto accusamus mollitia asperiores praesentium officia, quas aliquid quia corrupti, in excepturi velit magni illum alias eveniet odit placeat maiores voluptates.",
     labels: [{ id: "9c7df32b-34a5-4b06-92fb-1bee424a0c61", name: "protect" }],
     isDone: false,
+    location: {
+      name: "Elbphilharmonie Hamburg",
+      address: "Platz d. Deutschen Einheit 4, 20457 Hamburg",
+      latitude: 53.54141893739151,
+      longitude: 9.984184442472383,
+    },
   },
 ];
