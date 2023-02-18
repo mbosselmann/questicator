@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import { useRouter } from "next/router.js";
+import dynamic from "next/dynamic";
 
 import BackButton from "@/components/BackButton.js";
 import QuestLabels from "@/components/QuestLabels.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import QuestNotes from "@/components/QuestNotes.js";
+import { StyledList } from "@/styles/StyledList.js";
+
+const Map = dynamic(() => import("@/components/Map.js"), { ssr: false });
 
 const Article = styled.article`
   background-color: var(--light-bg-color);
@@ -47,9 +51,21 @@ export default function QuestDetails({
         <BackButton />
         <QuestLabels labels={selectedQuest.labels} size={"5rem"} />
       </FlexContainer>
-      <h2>{selectedQuest.title}</h2>
-      <p>{selectedQuest.description}</p>
-      {selectedQuest.notes && <QuestNotes notes={selectedQuest.notes} />}
+      <GridContainer>
+        <h2>{selectedQuest.title}</h2>
+        <p>{selectedQuest.description}</p>
+        {selectedQuest.notes && <QuestNotes notes={selectedQuest.notes} />}
+        {selectedQuest.location && (
+          <>
+            <h3>Location:</h3>
+            <StyledList>
+              <li>{selectedQuest.location.name}</li>
+              <li>{selectedQuest.location.address}</li>
+            </StyledList>
+            <Map location={selectedQuest.location} />
+          </>
+        )}
+      </GridContainer>
       <GridContainer>
         <p>
           {selectedQuest.isDone
