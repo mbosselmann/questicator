@@ -1,5 +1,5 @@
 import { data } from "db.js";
-import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState.js";
+import { useImmerLocalStorageState } from "@/lib/hooks/useImmerLocalStorageState.js";
 
 import Layout from "@/styles/Layout.js";
 import GlobalStyle from "../style.js";
