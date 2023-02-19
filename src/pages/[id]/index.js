@@ -59,8 +59,9 @@ export default function QuestDetails({
           <>
             <h3>Location:</h3>
             <StyledList>
-              <li>{selectedQuest.location.name}</li>
-              <li>{selectedQuest.location.address}</li>
+              <li>{selectedQuest.location.locationName}</li>
+              <li>{`${selectedQuest.location.street} ${selectedQuest.location.streetNumber}`}</li>
+              <li>{`${selectedQuest.location.postalCode} ${selectedQuest.location.place}`}</li>
             </StyledList>
             <Map location={selectedQuest.location} />
           </>
