@@ -24,7 +24,7 @@ export default function BackButton() {
   const router = useRouter();
 
   return (
-    <Button type="button" onClick={() => router.back()} aria-label="back">
+    <Button type="button" onClick={() => router.back()}>
       <Back /> <Underline>back</Underline>
     </Button>
   );
