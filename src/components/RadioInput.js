@@ -10,6 +10,7 @@ const Label = styled.label`
   align-items: center;
   gap: 0.5rem;
 `;
+
 export default function RadioInput({
   id,
   value,
