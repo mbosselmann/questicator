@@ -1,5 +1,5 @@
 import { useState } from "react";
-import getLongitudeLatitude from "@/lib/fetch/getLongitudeLatitude.js";
+import getLongitudeLatitude from "@/lib/services/getLongitudeLatitude.js";
 import formatQuestData from "@/lib/format/formatQuestData.js";
 
 import LocationForm from "./LocationForm.js";

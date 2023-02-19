@@ -10,8 +10,8 @@ export default function formatQuestData(questData, locationLongitudeLatitude) {
       streetNumber: questData.streetNumber,
       postalCode: questData.postalCode,
       place: questData.place,
-      longitude: locationLongitudeLatitude.longitude,
-      latitude: locationLongitudeLatitude.latitude,
+      longitude: locationLongitudeLatitude?.longitude,
+      latitude: locationLongitudeLatitude?.latitude,
     },
   };
 }

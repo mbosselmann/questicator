@@ -63,7 +63,10 @@ export default function QuestDetails({
               <li>{`${selectedQuest.location.street} ${selectedQuest.location.streetNumber}`}</li>
               <li>{`${selectedQuest.location.postalCode} ${selectedQuest.location.place}`}</li>
             </StyledList>
-            <Map location={selectedQuest.location} />
+            {selectedQuest.location.latitude &&
+              selectedQuest.location.longitude && (
+                <Map location={selectedQuest.location} />
+              )}
           </>
         )}
       </GridContainer>
