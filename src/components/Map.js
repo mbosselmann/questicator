@@ -5,7 +5,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 
 const StyledMapContainer = styled(MapContainer)`
-  height: 10rem;
+  height: 15rem;
   border: 10px solid var(--highlighted);
   border-radius: 15px;
 `;
@@ -13,7 +13,7 @@ const StyledMapContainer = styled(MapContainer)`
 export default function Map({ location }) {
   return (
     <StyledMapContainer
-      center={[location.latitude, location.longitude]}
+      center={[location.latitude + 0.002, location.longitude]}
       zoom={15}
       scrollWheelZoom={false}
     >
@@ -23,8 +23,9 @@ export default function Map({ location }) {
       />
       <Marker position={[location.latitude, location.longitude]}>
         <Popup>
-          <h3>{location.name}</h3>
-          <p>{location.address}</p>
+          <h3>{location.locationName}</h3>
+          <p>{`${location.street} ${location.streetNumber}`}</p>
+          <p>{`${location.postalCode} ${location.place}`}</p>
         </Popup>
       </Marker>
     </StyledMapContainer>
