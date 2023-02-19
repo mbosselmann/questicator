@@ -6,7 +6,7 @@ import QuestForm from "@/components/QuestForm.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import FormHeader from "@/components/FormHeader.js";
-import useQuestLabels from "@/lib/hook/useQuestLabels.js";
+import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
 const Wrapper = styled.div`
   background-color: var(--light-bg-color);
@@ -23,12 +23,10 @@ export default function AddQuest({ addQuest }) {
   const [newQuestId, setNewQuestId] = useState("");
   const [questLabels, handleQuestLabels] = useQuestLabels();
 
-  function onSubmit(formData) {
-    const { title, description } = formData;
+  function onSubmit(questData) {
     const newQuest = {
       id: uuidv4(),
-      title,
-      description,
+      ...questData,
       labels: questLabels,
       isDone: false,
     };
