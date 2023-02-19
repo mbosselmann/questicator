@@ -1,17 +1,16 @@
-import styled from "styled-components";
 import { useState } from "react";
+import getLongitudeLatitude from "@/lib/fetch/getLongitudeLatitude.js";
+import formatQuestData from "@/lib/format/formatQuestData.js";
 
+import LocationForm from "./LocationForm.js";
 import TextInput from "../components/TextInput.js";
 import Textarea from "../components/Textarea.js";
 import RadioInput from "../components/RadioInput.js";
+
 import { StyledButton } from "../styles/StyledButton.js";
 import { StyledList } from "@/styles/StyledList.js";
 import { StyledForm } from "@/styles/StyledForm.js";
-
-const Fieldset = styled.fieldset`
-  border: 5px solid var(--border-color);
-  border-radius: 0.3rem;
-`;
+import { StyledFieldset } from "@/styles/StyledFieldset.js";
 
 export default function QuestForm({
   onSubmit,
@@ -32,11 +31,20 @@ export default function QuestForm({
     )?.name ?? ""
   );
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
+    const dataLocation = {
+      locationName: data.locationName,
+      street: data.street,
+      streetNumber: data.streetNumber,
+      postalCode: data.postalCode,
+      place: data.place,
+    };
+    const locationLongitudeLatitude = await getLongitudeLatitude(dataLocation);
+    const questData = formatQuestData(data, locationLongitudeLatitude);
+    onSubmit(questData);
   }
 
   function handleChange(event) {
@@ -51,22 +59,25 @@ export default function QuestForm({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <TextInput
-        id="title"
-        name="title"
-        labelText="Title"
-        type="text"
-        defaultValue={selectedQuest ? selectedQuest.title : ""}
-        required
-      />
-      <Textarea
-        id="description"
-        name="description"
-        labelText="Description"
-        defaultValue={selectedQuest ? selectedQuest.description : ""}
-        required
-      />
-      <Fieldset>
+      <StyledFieldset>
+        <legend>Basic Information</legend>
+        <TextInput
+          id="title"
+          name="title"
+          labelText="Title"
+          type="text"
+          defaultValue={selectedQuest ? selectedQuest.title : ""}
+          required
+        />
+        <Textarea
+          id="description"
+          name="description"
+          labelText="Description"
+          defaultValue={selectedQuest ? selectedQuest.description : ""}
+          required
+        />
+      </StyledFieldset>
+      <StyledFieldset>
         <legend>Select kind of quest:</legend>
         <StyledList>
           <li>
@@ -103,8 +114,8 @@ export default function QuestForm({
             />
           </li>
         </StyledList>
-      </Fieldset>
-      <Fieldset>
+      </StyledFieldset>
+      <StyledFieldset>
         <legend>How important is this quest? (optional)</legend>
         <StyledList>
           <li>
@@ -140,7 +151,8 @@ export default function QuestForm({
             )}
           </li>
         </StyledList>
-      </Fieldset>
+      </StyledFieldset>
+      <LocationForm selectedQuest={selectedQuest} />
       <StyledButton type="submit">
         {selectedQuest ? "Update Quest" : "Add Quest"}
       </StyledButton>
