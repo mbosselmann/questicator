@@ -30,6 +30,9 @@ export default function QuestForm({
       (label) => label.name === "high-priority" || label.name === "low-priority"
     )?.name ?? ""
   );
+  const [isLocationFormDisplayed, setIsLocationFormDisplayed] = useState(
+    location ? true : false
+  );
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -152,7 +155,18 @@ export default function QuestForm({
           </li>
         </StyledList>
       </StyledFieldset>
-      <LocationForm selectedQuest={selectedQuest} />
+      <StyledButton
+        type="button"
+        onClick={() => setIsLocationFormDisplayed(!isLocationFormDisplayed)}
+      >
+        {isLocationFormDisplayed ? "Close location form" : "Show location form"}
+      </StyledButton>
+      {isLocationFormDisplayed && (
+        <LocationForm
+          location={selectedQuest.location}
+          isLocationFormDisplayed={isLocationFormDisplayed}
+        />
+      )}
       <StyledButton type="submit">
         {selectedQuest ? "Update Quest" : "Add Quest"}
       </StyledButton>

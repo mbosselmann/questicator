@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 import QuestLabels from "./QuestLabels.js";
-
-const Title = styled.h2`
-  margin: 0 0 0.8rem;
-`;
+import { StyledTitle } from "@/styles/StyledTitle.js";
 
 const Header = styled.header`
   height: 3rem;
@@ -16,7 +13,7 @@ const Header = styled.header`
 export default function FormHeader({ title, questLabels }) {
   return (
     <Header>
-      <Title>{title}</Title>
+      <StyledTitle>{title}</StyledTitle>
       {questLabels && <QuestLabels labels={questLabels} size={"3rem"} />}
     </Header>
   );

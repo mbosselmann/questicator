@@ -65,7 +65,10 @@ export default function QuestDetails({
             </StyledList>
             {selectedQuest.location.latitude &&
               selectedQuest.location.longitude && (
-                <Map location={selectedQuest.location} />
+                <Map
+                  location={selectedQuest.location}
+                  questId={selectedQuest.id}
+                />
               )}
           </>
         )}
