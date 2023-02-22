@@ -31,7 +31,7 @@ export default function QuestForm({
     )?.name ?? ""
   );
   const [isLocationFormDisplayed, setIsLocationFormDisplayed] = useState(
-    location ? true : false
+    selectedQuest?.location ? true : false
   );
 
   async function handleSubmit(event) {
