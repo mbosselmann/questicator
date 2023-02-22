@@ -1,3 +1,4 @@
+import Questicator from "@/assets/Icons/Questicator.js";
 import QuestList from "@/components/QuestList.js";
 
 export default function Home({ quests, updateQuestStatus }) {
@@ -14,6 +15,9 @@ export default function Home({ quests, updateQuestStatus }) {
         quests={unsolvedQuests}
         updateQuestStatus={updateQuestStatus}
       />
+      <div style={{ justifySelf: "center" }}>
+        <Questicator width="150px" height="150px" />
+      </div>
     </>
   );
 }
