@@ -16,7 +16,8 @@ const GridWrapper = styled.div`
 const Main = styled.main`
   height: 100%;
   overflow-y: scroll;
-  padding: 0.8rem;
+  display: grid;
+  justify-items: stretch;
 `;
 
 const Headline = styled.h1`
