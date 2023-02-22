@@ -40,6 +40,10 @@ export default function QuestDetails({
     return null;
   }
 
+  const hasLocation =
+    selectedQuest.location &&
+    Object.keys(selectedQuest.location).every((value) => value !== "");
+
   function handleDelete() {
     deleteQuest(selectedQuest.id);
     router.back();
@@ -55,7 +59,7 @@ export default function QuestDetails({
         <h2>{selectedQuest.title}</h2>
         <p>{selectedQuest.description}</p>
         {selectedQuest.notes && <QuestNotes notes={selectedQuest.notes} />}
-        {selectedQuest.location && (
+        {hasLocation && (
           <>
             <h3>Location:</h3>
             <StyledList>
