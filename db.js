@@ -74,13 +74,13 @@ export const data = [
     ],
     isDone: false,
     location: {
-      locationName: "Elbphilharmonie Hamburg",
-      street: "Platz der Deutschen Einheit",
-      streetNumber: "1",
-      postalCode: "20457",
+      locationName: "Flughafen Hamburg",
+      street: "Flughafenstraße",
+      streetNumber: "1-3",
+      postalCode: "22335",
       place: "Hamburg",
-      latitude: 53.54141893739151,
-      longitude: 9.984184442472383,
+      latitude: 53.6287337,
+      longitude: 10.0064612,
     },
 
     notes: [
@@ -137,15 +137,6 @@ export const data = [
       { id: "2", name: "low-priority" },
     ],
     isDone: false,
-    location: {
-      locationName: "Elbphilharmonie Hamburg",
-      street: "Platz der Deutschen Einheit",
-      streetNumber: "1",
-      postalCode: "20457",
-      place: "Hamburg",
-      latitude: 53.54141893739151,
-      longitude: 9.984184442472383,
-    },
   },
   {
     id: "5",
