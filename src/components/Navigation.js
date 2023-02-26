@@ -5,6 +5,7 @@ import Done from "../assets/Icons/Done.js";
 import Scroll from "../assets/Icons/Scroll.js";
 import { ScreenReaderOnly } from "../styles/ScreenReaderOnly.js";
 import Plus from "../assets/Icons/Plus.js";
+import Snake from "@/assets/Icons/Snake.js";
 
 const NavBar = styled.nav`
   background-color: var(--dark-bg-color);
@@ -29,6 +30,14 @@ export default function Navigation() {
   return (
     <NavBar>
       <StyledLink href="/" active={router.pathname === "/" ? "active" : ""}>
+        <Snake />
+        <ScreenReaderOnly>In Progress</ScreenReaderOnly>
+      </StyledLink>
+
+      <StyledLink
+        href="/unsolvedquests"
+        active={router.pathname === "/unsolvedquests" ? "active" : ""}
+      >
         <Scroll />
         <ScreenReaderOnly>In Progress</ScreenReaderOnly>
       </StyledLink>
