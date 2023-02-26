@@ -8,4 +8,5 @@ export const StyledList = styled.ul.attrs(() => ({
   display: grid;
   gap: 0.8rem;
   margin: 0;
+  width: 100%;
 `;

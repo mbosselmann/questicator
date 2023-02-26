@@ -55,13 +55,19 @@ export default function Quest({
   labels,
   isDone,
   updateQuestStatus,
+  displayCheckbox,
 }) {
   return (
     <Article>
       <Section>
-        <FormContainer>
-          <CheckboxForm isDone={isDone} updateQuestStatus={updateQuestStatus} />
-        </FormContainer>
+        {displayCheckbox && (
+          <FormContainer>
+            <CheckboxForm
+              isDone={isDone}
+              updateQuestStatus={updateQuestStatus}
+            />
+          </FormContainer>
+        )}
         <Heading>{title}</Heading>
       </Section>
       <div>

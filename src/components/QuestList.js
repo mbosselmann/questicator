@@ -1,7 +1,11 @@
 import Quest from "@/components/Quest.js";
 import { StyledList } from "@/styles/StyledList.js";
 
-export default function QuestList({ quests, updateQuestStatus }) {
+export default function QuestList({
+  quests,
+  updateQuestStatus,
+  displayCheckbox,
+}) {
   return (
     <StyledList>
       {quests.map((quest) => (
@@ -12,6 +16,7 @@ export default function QuestList({ quests, updateQuestStatus }) {
             labels={quest.labels}
             isDone={quest.isDone}
             updateQuestStatus={() => updateQuestStatus(quest.id)}
+            displayCheckbox={displayCheckbox}
           />
         </li>
       ))}
