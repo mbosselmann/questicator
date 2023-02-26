@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }) {
   const [quests, setQuests] = useImmerLocalStorageState("quests", {
     defaultValue: data,
   });
+  const unsolvedQuests = quests.filter(({ isDone }) => !isDone);
 
   function updateQuestStatus(questId) {
     if (quests) {
@@ -62,6 +63,7 @@ export default function App({ Component, pageProps }) {
         editQuest={editQuest}
         deleteQuest={deleteQuest}
         addNote={addNote}
+        unsolvedQuests={unsolvedQuests}
       />
     </Layout>
   );
