@@ -42,18 +42,18 @@ export default function Navigation() {
         <ScreenReaderOnly>In Progress</ScreenReaderOnly>
       </StyledLink>
       <StyledLink
-        href="/addquest"
-        active={router.pathname === "/addquest" ? "active" : ""}
-      >
-        <Plus />
-        <ScreenReaderOnly>Add Quest</ScreenReaderOnly>
-      </StyledLink>
-      <StyledLink
         href="/solvedquests"
         active={router.pathname === "/solvedquests" ? "active" : ""}
       >
         <Done />
         <ScreenReaderOnly>Solved</ScreenReaderOnly>
+      </StyledLink>
+      <StyledLink
+        href="/addquest"
+        active={router.pathname === "/addquest" ? "active" : ""}
+      >
+        <Plus />
+        <ScreenReaderOnly>Add Quest</ScreenReaderOnly>
       </StyledLink>
     </NavBar>
   );
