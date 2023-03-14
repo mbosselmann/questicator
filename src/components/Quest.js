@@ -3,29 +3,34 @@ import styled from "styled-components";
 import CheckboxForm from "./CheckboxForm.js";
 import QuestLabels from "./QuestLabels.js";
 import { ScreenReaderOnly } from "../styles/ScreenReaderOnly.js";
-ScreenReaderOnly;
+import { StyledButton } from "@/styles/StyledButton.js";
 
 const Article = styled.article`
   height: 100%;
+  padding: 0.5rem;
+  background-color: var(--light-bg-color);
+  border-left: 0.5rem dashed var(--border-color);
+  border-right: 0.5rem dashed var(--border-color);
+  ${({ isSelected }) =>
+    isSelected && "box-shadow: 0 0 15px var(--highlighted);"}
+`;
+
+const FlexContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   justify-content: space-between;
-  padding: 0.5rem;
-  background-color: var(--light-bg-color);
-  border-left: 0.5rem dashed var(--border-color);
-  border-right: 0.5rem dashed var(--border-color);
 `;
 
-const StyledLink = styled.a`
+const StyledHiddenLink = styled.a`
   &::after {
     content: "";
     display: block;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: ${({ displayCheckbox }) => (displayCheckbox ? "0" : "100px")};
     right: 0;
   }
 `;
@@ -55,29 +60,42 @@ export default function Quest({
   labels,
   isDone,
   updateQuestStatus,
+  updateChosenQuestIds,
   displayCheckbox,
+  isSelected,
+  chosenQuestIdsLength,
 }) {
   return (
-    <Article>
-      <Section>
-        {displayCheckbox && (
-          <FormContainer>
-            <CheckboxForm
-              isDone={isDone}
-              updateQuestStatus={updateQuestStatus}
-            />
-          </FormContainer>
-        )}
-        <Heading>{title}</Heading>
-      </Section>
-      <div>
-        <QuestLabels labels={labels} />
-        <Link href={`/${id}`} passHref legacyBehavior>
-          <StyledLink>
-            <ScreenReaderOnly>quest details</ScreenReaderOnly>
-          </StyledLink>
-        </Link>
-      </div>
+    <Article isSelected={isSelected}>
+      <FlexContainer>
+        <Section>
+          {displayCheckbox ? (
+            <FormContainer>
+              <CheckboxForm
+                isDone={isDone}
+                updateQuestStatus={updateQuestStatus}
+              />
+            </FormContainer>
+          ) : (
+            <StyledButton
+              type="button"
+              onClick={updateChosenQuestIds}
+              disabled={!isSelected && chosenQuestIdsLength >= 3}
+            >
+              {isSelected ? "Remove" : "Select"}
+            </StyledButton>
+          )}
+          <Heading>{title}</Heading>
+        </Section>
+        <div>
+          <QuestLabels labels={labels} />
+          <Link href={`/${id}`} passHref legacyBehavior>
+            <StyledHiddenLink displayCheckbox={displayCheckbox}>
+              <ScreenReaderOnly>quest details</ScreenReaderOnly>
+            </StyledHiddenLink>
+          </Link>
+        </div>
+      </FlexContainer>
     </Article>
   );
 }
