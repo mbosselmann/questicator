@@ -8,7 +8,32 @@ export default function App({ Component, pageProps }) {
   const [quests, setQuests] = useImmerLocalStorageState("quests", {
     defaultValue: data,
   });
+
+  const [chosenQuestIds, setChosenQuestIds] = useImmerLocalStorageState(
+    "chosenQuestIds",
+    { defaultValue: [] }
+  );
   const unsolvedQuests = quests.filter(({ isDone }) => !isDone);
+
+  const selectedQuests = quests.filter((quest) =>
+    chosenQuestIds.find((chosenQuestId) => chosenQuestId === quest.id)
+  );
+
+  function updateChosenQuestIds(questId) {
+    const selectedQuest = unsolvedQuests.find((quest) => quest.id === questId);
+
+    if (
+      chosenQuestIds.some((chosenQuestId) => chosenQuestId === selectedQuest.id)
+    ) {
+      setChosenQuestIds(
+        chosenQuestIds.filter(
+          (chosenQuestId) => chosenQuestId !== selectedQuest.id
+        )
+      );
+    } else {
+      setChosenQuestIds([...chosenQuestIds, selectedQuest.id]);
+    }
+  }
 
   function updateQuestStatus(questId) {
     if (quests) {
@@ -64,6 +89,9 @@ export default function App({ Component, pageProps }) {
         deleteQuest={deleteQuest}
         addNote={addNote}
         unsolvedQuests={unsolvedQuests}
+        chosenQuestIds={chosenQuestIds}
+        updateChosenQuestIds={updateChosenQuestIds}
+        selectedQuests={selectedQuests}
       />
     </Layout>
   );
