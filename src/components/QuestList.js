@@ -5,6 +5,8 @@ export default function QuestList({
   quests,
   updateQuestStatus,
   displayCheckbox,
+  chosenQuestIds,
+  updateChosenQuestIds,
 }) {
   return (
     <StyledList>
@@ -17,6 +19,11 @@ export default function QuestList({
             isDone={quest.isDone}
             updateQuestStatus={() => updateQuestStatus(quest.id)}
             displayCheckbox={displayCheckbox}
+            isSelected={chosenQuestIds?.find(
+              (chosenQuestId) => chosenQuestId === quest.id
+            )}
+            updateChosenQuestIds={() => updateChosenQuestIds(quest.id)}
+            chosenQuestIdsLength={chosenQuestIds?.length}
           />
         </li>
       ))}
