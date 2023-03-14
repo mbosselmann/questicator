@@ -1,8 +1,7 @@
-import Questicator from "@/assets/Icons/Questicator.js";
 import QuestList from "@/components/QuestList.js";
 
-export default function Home({ unsolvedQuests, updateQuestStatus }) {
-  if (unsolvedQuests.length === 0) {
+export default function Home({ selectedQuests, updateQuestStatus }) {
+  if (selectedQuests.length === 0) {
     return <p>No open quests yet.</p>;
   }
 
@@ -10,7 +9,7 @@ export default function Home({ unsolvedQuests, updateQuestStatus }) {
     <>
       <h2>Unsolved Quests</h2>
       <QuestList
-        quests={unsolvedQuests}
+        quests={selectedQuests}
         updateQuestStatus={updateQuestStatus}
         displayCheckbox
       />
