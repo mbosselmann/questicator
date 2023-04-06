@@ -9,6 +9,12 @@ export default function App({ Component, pageProps }) {
     defaultValue: data,
   });
 
+  const solvedQuests = quests.filter(({ isDone }) => isDone);
+
+  const today = new Date().toDateString();
+
+  console.log(today);
+
   const [chosenQuestIds, setChosenQuestIds] = useImmerLocalStorageState(
     "chosenQuestIds",
     { defaultValue: [] }
@@ -30,9 +36,23 @@ export default function App({ Component, pageProps }) {
           (chosenQuestId) => chosenQuestId !== selectedQuest.id
         )
       );
+      setQuests(
+        quests.map((quest) =>
+          quest.id === questId ? { ...quest, dateSelected: today } : quest
+        )
+      );
     } else {
       setChosenQuestIds([...chosenQuestIds, selectedQuest.id]);
+      setQuests(
+        quests.map((quest) =>
+          quest.id === questId ? { ...quest, dateSelected: today } : quest
+        )
+      );
     }
+  }
+
+  function deleteChosenQuestIds() {
+    setChosenQuestIds([]);
   }
 
   function updateQuestStatus(questId) {
@@ -91,7 +111,10 @@ export default function App({ Component, pageProps }) {
         unsolvedQuests={unsolvedQuests}
         chosenQuestIds={chosenQuestIds}
         updateChosenQuestIds={updateChosenQuestIds}
+        deleteChosenQuestIds={deleteChosenQuestIds}
         selectedQuests={selectedQuests}
+        solvedQuests={solvedQuests}
+        today={today}
       />
     </Layout>
   );
