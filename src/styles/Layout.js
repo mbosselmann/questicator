@@ -1,11 +1,11 @@
-import localFont from "@next/font/local";
+import { Cabin_Sketch } from "@next/font/google";
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router.js";
 
 import Navigation from "../components/Navigation.js";
 
-const risque = localFont({ src: "../assets/fonts/risque-regular.ttf" });
+const cabinSketch = Cabin_Sketch({ subsets: ["latin"], weight: "400" });
 
 const GridWrapper = styled.div`
   height: 100vh;
@@ -37,7 +37,7 @@ export default function Layout({ children }) {
 
   return (
     <GridWrapper>
-      <Headline className={risque.className}>Questicator</Headline>
+      <Headline className={cabinSketch.className}>Questicator</Headline>
       <Main ref={scrollRef}>{children}</Main>
       <Navigation />
     </GridWrapper>
