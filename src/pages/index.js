@@ -1,44 +1,49 @@
-import styled, { keyframes } from "styled-components";
-
 import Questicator from "@/assets/Icons/Questicator.js";
 import { StyledLink } from "@/styles/StyledLink.js";
+import { Slide } from "@/styles/Slide.js";
+import { FlexWrapper } from "@/styles/FlexWrapper.js";
+import { StyledButton } from "@/styles/StyledButton.js";
 
-export default function Home() {
+export default function Home({ selectedQuests, deleteChosenQuestIds }) {
+  const amountOfSolvedQuests =
+    3 - selectedQuests?.filter(({ isDone }) => !isDone).length;
+  const motivationalMessages = ["Work hard!", "You can do it!", "Go for it!"];
+
   return (
-    <Wrapper>
+    <FlexWrapper>
       <>
         <Slide>
           <Questicator width="250px" height="250px" />
         </Slide>
-        <h2>Oh no! The Questicator has appeared!</h2>
-        <p>
-          You need to defeat this powerful creature. Solve three quests from the
-          list above to win against the Questicator. Which of the following
-          quests do you want to choose?
-        </p>
-        <StyledLink href="/availablequests">Choose quests</StyledLink>
+        {selectedQuests.length > 0 ? (
+          <>
+            <p>
+              You already chose three quests to conquer the Questicator. You
+              solved {amountOfSolvedQuests} out of 3 quests.{" "}
+              {motivationalMessages[amountOfSolvedQuests]}
+              Come back tomorrow to solve more quests.
+            </p>
+            {amountOfSolvedQuests !== 3 && (
+              <StyledLink href="/unsolvedquests">
+                View unsolved quests
+              </StyledLink>
+            )}
+            <StyledButton type="button" onClick={deleteChosenQuestIds}>
+              Reset my progress
+            </StyledButton>
+          </>
+        ) : (
+          <>
+            <h2>Oh no! The Questicator has appeared!</h2>
+            <p>
+              You need to defeat this powerful creature. Solve three quests from
+              the list above to win against the Questicator. Which of the
+              following quests do you want to choose?
+            </p>
+            <StyledLink href="/availablequests">Choose quests</StyledLink>
+          </>
+        )}
       </>
-    </Wrapper>
+    </FlexWrapper>
   );
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const slide = keyframes`
-
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }`;
-
-const Slide = styled.div`
-  display: grid;
-  animation: 4s ${slide};
-`;
