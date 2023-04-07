@@ -3,8 +3,12 @@ import { StyledLink } from "@/styles/StyledLink.js";
 import { Slide } from "@/styles/Slide.js";
 import { FlexWrapper } from "@/styles/FlexWrapper.js";
 import { StyledButton } from "@/styles/StyledButton.js";
+import { useQuests, useQuestsDispatch } from "@/context.js";
 
-export default function Home({ selectedQuests, deleteChosenQuestIds }) {
+export default function Home() {
+  const { selectedQuests } = useQuests();
+  const dispatch = useQuestsDispatch();
+
   const amountOfSolvedQuests =
     3 - selectedQuests?.filter(({ isDone }) => !isDone).length;
   const motivationalMessages = ["Work hard!", "You can do it!", "Go for it!"];
@@ -28,7 +32,10 @@ export default function Home({ selectedQuests, deleteChosenQuestIds }) {
                 View unsolved quests
               </StyledLink>
             )}
-            <StyledButton type="button" onClick={deleteChosenQuestIds}>
+            <StyledButton
+              type="button"
+              onClick={() => dispatch({ type: "deleteChosenQuestIds" })}
+            >
               Reset my progress
             </StyledButton>
           </>

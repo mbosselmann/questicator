@@ -1,4 +1,5 @@
 import { useRouter } from "next/router.js";
+import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
@@ -6,7 +7,10 @@ import QuestForm from "@/components/QuestForm.js";
 import FormHeader from "@/components/FormHeader.js";
 import BackButton from "@/components/BackButton.js";
 
-export default function EditQuest({ quests, editQuest }) {
+export default function EditQuest() {
+  const { quests } = useQuests();
+  const dispatch = useQuestsDispatch();
+
   const router = useRouter();
   const { id } = router.query;
   const selectedQuest = quests.find((quest) => quest.id === id);
@@ -26,7 +30,7 @@ export default function EditQuest({ quests, editQuest }) {
       labels: questLabels || selectedQuest.labels,
       isDone: selectedQuest.isDone,
     };
-    editQuest(updatedQuest);
+    dispatch({ type: "editQuest", updatedQuest });
     router.back();
   }
 

@@ -1,4 +1,5 @@
 import QuestList from "@/components/QuestList.js";
+import { useQuests } from "@/context.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import styled from "styled-components";
 
@@ -6,11 +7,9 @@ const Wrapper = styled.div`
   display: grid;
   margin: 0 0 1rem;
 `;
-export default function AvailableQuests({
-  unsolvedQuests,
-  updateChosenQuestIds,
-  chosenQuestIds,
-}) {
+export default function AvailableQuests() {
+  const { chosenQuestIds, unsolvedQuests } = useQuests();
+
   const sortedSelectedQuests = chosenQuestIds.map((chosenQuestId) =>
     unsolvedQuests.find((unsolvedQuest) => unsolvedQuest.id === chosenQuestId)
   );
@@ -31,9 +30,8 @@ export default function AvailableQuests({
             ? sortedSelectedQuests
             : sortedAvailableQuests
         }
-        updateChosenQuestIds={updateChosenQuestIds}
-        displayCheckbox={false}
         chosenQuestIds={chosenQuestIds}
+        displayCheckbox={false}
       />
       {chosenQuestIds.length === 3 && (
         <Wrapper>

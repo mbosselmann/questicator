@@ -2,8 +2,11 @@ import QuestList from "@/components/QuestList.js";
 import QuesticatorDefeated from "@/assets/Icons/QuesticatorDefeated.js";
 import { Slide } from "@/styles/Slide.js";
 import { FlexWrapper } from "@/styles/FlexWrapper.js";
+import { useQuests } from "@/context.js";
 
-export default function Home({ selectedQuests, updateQuestStatus }) {
+export default function UnsolvedQuests() {
+  const { selectedQuests } = useQuests();
+
   if (selectedQuests.length === 0) {
     return (
       <p>
@@ -32,7 +35,6 @@ export default function Home({ selectedQuests, updateQuestStatus }) {
       <h2>Unsolved Quests</h2>
       <QuestList
         quests={selectedQuests.filter(({ isDone }) => !isDone)}
-        updateQuestStatus={updateQuestStatus}
         displayCheckbox
       />
     </>

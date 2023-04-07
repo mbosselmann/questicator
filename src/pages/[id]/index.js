@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router.js";
 import dynamic from "next/dynamic";
+import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import BackButton from "@/components/BackButton.js";
 import QuestLabels from "@/components/QuestLabels.js";
@@ -27,11 +28,10 @@ const GridContainer = styled.section`
   gap: 0.5rem;
 `;
 
-export default function QuestDetails({
-  quests,
-  updateQuestStatus,
-  deleteQuest,
-}) {
+export default function QuestDetails() {
+  const { quests } = useQuests();
+  const dispatch = useQuestsDispatch();
+
   const router = useRouter();
   const { id } = router.query;
   const selectedQuest = quests.find((quest) => quest.id === id);
@@ -45,7 +45,7 @@ export default function QuestDetails({
     Object.keys(selectedQuest.location).every((value) => value !== "");
 
   function handleDelete() {
-    deleteQuest(selectedQuest.id);
+    dispatch({ type: "deleteQuest", questID: selectedQuest.id });
     router.back();
   }
 
@@ -85,7 +85,9 @@ export default function QuestDetails({
         </p>
         <StyledButton
           type="button"
-          onClick={() => updateQuestStatus(selectedQuest.id)}
+          onClick={() =>
+            dispatch({ type: "updateQuestStatus", questId: selectedQuest.id })
+          }
         >
           Not true?
         </StyledButton>

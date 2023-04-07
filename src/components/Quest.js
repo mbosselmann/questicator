@@ -4,6 +4,7 @@ import CheckboxForm from "./CheckboxForm.js";
 import QuestLabels from "./QuestLabels.js";
 import { ScreenReaderOnly } from "../styles/ScreenReaderOnly.js";
 import { StyledButton } from "@/styles/StyledButton.js";
+import { useQuestsDispatch } from "@/context.js";
 
 const Article = styled.article`
   height: 100%;
@@ -59,12 +60,12 @@ export default function Quest({
   title,
   labels,
   isDone,
-  updateQuestStatus,
-  updateChosenQuestIds,
   displayCheckbox,
-  isSelected,
+  isSelected = false,
   chosenQuestIdsLength,
 }) {
+  const dispatch = useQuestsDispatch();
+
   return (
     <Article isSelected={isSelected}>
       <FlexContainer>
@@ -73,13 +74,17 @@ export default function Quest({
             <FormContainer>
               <CheckboxForm
                 isDone={isDone}
-                updateQuestStatus={updateQuestStatus}
+                updateQuestStatus={() =>
+                  dispatch({ type: "updateQuestStatus", questId: id })
+                }
               />
             </FormContainer>
           ) : (
             <StyledButton
               type="button"
-              onClick={updateChosenQuestIds}
+              onClick={() =>
+                dispatch({ type: "updateChosenQuestIds", questId: id })
+              }
               disabled={!isSelected && chosenQuestIdsLength >= 3}
             >
               {isSelected ? "Remove" : "Select"}

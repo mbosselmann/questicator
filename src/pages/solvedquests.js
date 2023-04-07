@@ -1,6 +1,8 @@
 import QuestList from "@/components/QuestList.js";
+import { useQuests } from "@/context.js";
 
-export default function SolvedQuests({ solvedQuests, updateQuestStatus }) {
+export default function SolvedQuests() {
+  const { solvedQuests } = useQuests();
   if (solvedQuests.length === 0) {
     return (
       <p>
@@ -13,11 +15,7 @@ export default function SolvedQuests({ solvedQuests, updateQuestStatus }) {
   return (
     <>
       <h2>Solved Quests</h2>
-      <QuestList
-        quests={solvedQuests}
-        updateQuestStatus={updateQuestStatus}
-        displayCheckbox
-      />
+      <QuestList quests={solvedQuests} displayCheckbox />
     </>
   );
 }

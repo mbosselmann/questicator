@@ -1,12 +1,11 @@
 import Quest from "@/components/Quest.js";
+import { useQuests } from "@/context.js";
 import { StyledList } from "@/styles/StyledList.js";
 
 export default function QuestList({
   quests,
-  updateQuestStatus,
   displayCheckbox,
-  chosenQuestIds,
-  updateChosenQuestIds,
+  chosenQuestIds = [],
 }) {
   return (
     <StyledList>
@@ -17,12 +16,10 @@ export default function QuestList({
             title={quest.title}
             labels={quest.labels}
             isDone={quest.isDone}
-            updateQuestStatus={() => updateQuestStatus(quest.id)}
             displayCheckbox={displayCheckbox}
             isSelected={chosenQuestIds?.find(
               (chosenQuestId) => chosenQuestId === quest.id
             )}
-            updateChosenQuestIds={() => updateChosenQuestIds(quest.id)}
             chosenQuestIdsLength={chosenQuestIds?.length}
           />
         </li>

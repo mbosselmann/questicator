@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router.js";
+import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import { StyledButton } from "@/styles/StyledButton.js";
 import Textarea from "@/components/Textarea.js";
@@ -12,7 +13,10 @@ const Wrapper = styled.div`
   padding: 0.5rem;
 `;
 
-export default function AddNotes({ quests, addNote }) {
+export default function AddNotes() {
+  const { quests } = useQuests();
+  const dispatch = useQuestsDispatch();
+
   const router = useRouter();
   const { id } = router.query;
   const selectedQuest = quests.find((quest) => quest.id === id);
@@ -23,7 +27,7 @@ export default function AddNotes({ quests, addNote }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    addNote(event.target.note.value, id);
+    dispatch({ type: "addNote", note: event.target.note.value, questId: id });
     event.target.reset();
   }
   return (
