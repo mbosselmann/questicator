@@ -1,11 +1,21 @@
+const today = new Date().toDateString();
+
+console.log(today);
+
 export default function questsReducer(state, action) {
   switch (action.type) {
+    case "initialize": {
+      return action.initialState;
+    }
     case "addQuest": {
-      return { ...state, quests: [action.quest, ...quests] };
+      return {
+        chosenQuestIds: state.chosenQuestIds,
+        quests: [action.quest, ...state.quests],
+      };
     }
     case "editQuest": {
       return {
-        ...state,
+        chosenQuestIds: state.chosenQuestIds,
         quests: state.quests.map((quest) =>
           quest.id === action.updatedQuest.id ? action.updatedQuest : quest
         ),
@@ -13,13 +23,13 @@ export default function questsReducer(state, action) {
     }
     case "deleteQuest": {
       return {
-        ...state,
+        chosenQuestIds: state.chosenQuestIds,
         quests: state.quests.filter((quest) => quest.id !== action.questId),
       };
     }
     case "updateQuestStatus": {
       return {
-        ...state,
+        chosenQuestIds: state.chosenQuestIds,
         quests: state.quests.map((quest) =>
           quest.id === action.questId
             ? { ...quest, isDone: !quest.isDone }
@@ -29,7 +39,7 @@ export default function questsReducer(state, action) {
     }
     case "addNote": {
       return {
-        ...state,
+        chosenQuestIds: state.chosenQuestIds,
         quests: state.quests.map((quest) =>
           quest.id === action.questId
             ? {
@@ -43,7 +53,7 @@ export default function questsReducer(state, action) {
       };
     }
     case "deleteChosenQuestIds": {
-      return { ...state, chosenQuestIds: [] };
+      return { quests: state.quests, chosenQuestIds: [] };
     }
     case "updateChosenQuestIds": {
       const selectedQuest = state.quests.find(

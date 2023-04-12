@@ -6,10 +6,6 @@ import questsReducer from "@/reducer.js";
 const QuestsContext = createContext();
 const QuestsDispatchContext = createContext();
 
-const today = new Date().toDateString();
-
-console.log(today);
-
 export function QuestsProvider({ children }) {
   const [storagedQuests, setStoragedQuests] = useImmerLocalStorageState(
     "quests",
@@ -22,24 +18,27 @@ export function QuestsProvider({ children }) {
   const initialState = {
     quests: storagedQuests,
     chosenQuestIds: storagedChosenQuestIds,
+    isInitial: true,
   };
 
-  const [{ quests, chosenQuestIds }, dispatch] = useReducer(
+  const [{ quests, chosenQuestIds, isInitial }, dispatch] = useReducer(
     questsReducer,
     initialState
   );
 
   useEffect(() => {
-    if (quests !== initialState.quests) {
-      setStoragedQuests(quests);
-    }
-  }, [quests, initialState.quests, setStoragedQuests]);
+    dispatch({
+      type: "initialize",
+      initialState: initialState,
+    });
+  }, [storagedChosenQuestIds, storagedQuests]);
 
   useEffect(() => {
-    if (chosenQuestIds !== initialState.chosenQuestIds) {
+    if (!isInitial) {
+      setStoragedQuests(quests);
       setStoragedChosenQuestIds(chosenQuestIds);
     }
-  }, [chosenQuestIds, initialState.chosenQuestIds, setStoragedChosenQuestIds]);
+  }, [chosenQuestIds, quests, isInitial]);
 
   const value = {
     quests,
