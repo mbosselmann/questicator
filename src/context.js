@@ -21,6 +21,10 @@ export function QuestsProvider({ children }) {
   const [storagedChosenQuestIds, setStoragedChosenQuestIds] =
     useImmerLocalStorageState("chosenQuestIds", { defaultValue: [] });
 
+  const [today, setToday] = useImmerLocalStorageState("today", {
+    defaultValue: new Date().toDateString(),
+  });
+
   const initialState = useMemo(() => {
     return {
       quests: storagedQuests,
@@ -55,6 +59,7 @@ export function QuestsProvider({ children }) {
   ]);
 
   const value = {
+    today,
     quests,
     chosenQuestIds,
     selectedQuests: quests.filter((quest) =>

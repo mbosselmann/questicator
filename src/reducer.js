@@ -1,7 +1,3 @@
-const today = new Date().toDateString();
-
-console.log(today);
-
 export default function questsReducer(state, action) {
   switch (action.type) {
     case "initialize": {
@@ -71,7 +67,7 @@ export default function questsReducer(state, action) {
           ),
           quests: state.quests.map((quest) =>
             quest.id === action.questId
-              ? { ...quest, dateSelected: today }
+              ? { ...quest, dateSelected: new Date().toDateString() }
               : quest
           ),
         };
@@ -80,7 +76,7 @@ export default function questsReducer(state, action) {
           chosenQuestIds: [...state.chosenQuestIds, selectedQuest.id],
           quests: state.quests.map((quest) =>
             quest.id === action.questId
-              ? { ...quest, dateSelected: today }
+              ? { ...quest, dateSelected: new Date().toDateString() }
               : quest
           ),
         };
