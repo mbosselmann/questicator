@@ -1,5 +1,11 @@
 import { data } from "../db.js";
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useMemo,
+} from "react";
 import { useImmerLocalStorageState } from "./lib/hooks/useImmerLocalStorageState.js";
 import questsReducer from "@/reducer.js";
 
@@ -15,11 +21,13 @@ export function QuestsProvider({ children }) {
   const [storagedChosenQuestIds, setStoragedChosenQuestIds] =
     useImmerLocalStorageState("chosenQuestIds", { defaultValue: [] });
 
-  const initialState = {
-    quests: storagedQuests,
-    chosenQuestIds: storagedChosenQuestIds,
-    isInitial: true,
-  };
+  const initialState = useMemo(() => {
+    return {
+      quests: storagedQuests,
+      chosenQuestIds: storagedChosenQuestIds,
+      isInitial: true,
+    };
+  }, [storagedChosenQuestIds, storagedQuests]);
 
   const [{ quests, chosenQuestIds, isInitial }, dispatch] = useReducer(
     questsReducer,
@@ -29,16 +37,22 @@ export function QuestsProvider({ children }) {
   useEffect(() => {
     dispatch({
       type: "initialize",
-      initialState: initialState,
+      initialState,
     });
-  }, [storagedChosenQuestIds, storagedQuests]);
+  }, [storagedChosenQuestIds, storagedQuests, initialState]);
 
   useEffect(() => {
     if (!isInitial) {
       setStoragedQuests(quests);
       setStoragedChosenQuestIds(chosenQuestIds);
     }
-  }, [chosenQuestIds, quests, isInitial]);
+  }, [
+    chosenQuestIds,
+    quests,
+    isInitial,
+    setStoragedQuests,
+    setStoragedChosenQuestIds,
+  ]);
 
   const value = {
     quests,
