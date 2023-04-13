@@ -56,7 +56,12 @@ export default function questsReducer(state, action) {
       };
     }
     case "deleteChosenQuestIds": {
-      return { quests: state.quests, chosenQuestIds: [] };
+      const updatedQuests = state.quests.map((quest) =>
+        state.chosenQuestIds.some((chosenQuestId) => chosenQuestId === quest.id)
+          ? { ...quest, dateSelected: null, dateFinished: null, isDone: false }
+          : quest
+      );
+      return { quests: updatedQuests, chosenQuestIds: [] };
     }
     case "updateChosenQuestIds": {
       const selectedQuest = state.quests.find(
