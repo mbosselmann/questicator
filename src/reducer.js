@@ -26,11 +26,18 @@ export default function questsReducer(state, action) {
     case "updateQuestStatus": {
       return {
         chosenQuestIds: state.chosenQuestIds,
-        quests: state.quests.map((quest) =>
-          quest.id === action.questId
-            ? { ...quest, isDone: !quest.isDone }
-            : quest
-        ),
+        quests: state.quests.map((quest) => {
+          if (quest.id === action.questId) {
+            return !quest.isDone
+              ? {
+                  ...quest,
+                  isDone: true,
+                  dateFinished: new Date().toDateString(),
+                }
+              : { ...quest, isDone: false, dateFinished: null };
+          }
+          return quest;
+        }),
       };
     }
     case "addNote": {
