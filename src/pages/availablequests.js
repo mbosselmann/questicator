@@ -22,24 +22,33 @@ export default function AvailableQuests() {
   return (
     <>
       <h2>Available Quests</h2>
-      <p>Number of chosen quests: {chosenQuestIds.length}/3</p>
-      <p>Select the quests you want to solve.</p>
-      <QuestList
-        quests={
-          sortedSelectedQuests.length === 3
-            ? sortedSelectedQuests
-            : sortedAvailableQuests
-        }
-        chosenQuestIds={chosenQuestIds}
-        displayCheckbox={false}
-      />
-      {chosenQuestIds.length === 3 && (
-        <Wrapper>
-          <p>You selected three quests to defeat the Questicator.</p>
-          <StyledLink href="/unsolvedquests">
-            Let the challenge begin!
-          </StyledLink>
-        </Wrapper>
+      {unsolvedQuests.length > 0 ? (
+        <>
+          <p>Number of chosen quests: {chosenQuestIds.length}/3</p>
+          <p>Select the quests you want to solve.</p>
+          <QuestList
+            quests={
+              sortedSelectedQuests.length === 3
+                ? sortedSelectedQuests
+                : sortedAvailableQuests
+            }
+            chosenQuestIds={chosenQuestIds}
+            displayCheckbox={false}
+          />
+          {chosenQuestIds.length === 3 && (
+            <Wrapper>
+              <p>You selected three quests to defeat the Questicator.</p>
+              <StyledLink href="/unsolvedquests">
+                Let the challenge begin!
+              </StyledLink>
+            </Wrapper>
+          )}
+        </>
+      ) : (
+        <>
+          <p>You have no unsolved quests. You should add new quest first.</p>
+          <StyledLink href="/addquest">Add quests</StyledLink>
+        </>
       )}
     </>
   );
