@@ -3,6 +3,7 @@ import QuesticatorDefeated from "@/assets/Icons/QuesticatorDefeated.js";
 import { Slide } from "@/styles/Slide.js";
 import { FlexWrapper } from "@/styles/FlexWrapper.js";
 import { useQuests } from "@/context.js";
+import Date from "@/components/Date.js";
 
 export default function UnsolvedQuests() {
   const { selectedQuests } = useQuests();
@@ -32,7 +33,9 @@ export default function UnsolvedQuests() {
 
   return (
     <>
-      <h2>Unsolved Quests</h2>
+      <h2>
+        Unsolved Quests <Date />
+      </h2>
       <QuestList
         quests={selectedQuests.filter(({ isDone }) => !isDone)}
         displayCheckbox

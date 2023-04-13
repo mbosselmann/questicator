@@ -9,6 +9,7 @@ import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import QuestNotes from "@/components/QuestNotes.js";
 import { StyledList } from "@/styles/StyledList.js";
+import Date from "@/components/Date.js";
 
 const Map = dynamic(() => import("@/components/Map.js"), { ssr: false });
 
@@ -53,11 +54,29 @@ export default function QuestDetails() {
     <Article>
       <FlexContainer>
         <BackButton />
+
         <QuestLabels labels={selectedQuest.labels} size={"5rem"} />
       </FlexContainer>
       <GridContainer>
+        {selectedQuest.dateSelected && !selectedQuest.dateFinished && (
+          <p>
+            <strong>Note:</strong> You did not finish this quest. You should
+            solve it as soon as possible to defeat the Questicator!
+          </p>
+        )}
         <h2>{selectedQuest.title}</h2>
         <p>{selectedQuest.description}</p>
+        {selectedQuest.dateSelected && (
+          <p>
+            You selected this quest on <Date day={selectedQuest.dateSelected} />
+          </p>
+        )}
+        {selectedQuest.dateSelected && selectedQuest.dateFinished && (
+          <p>
+            You finished this quest on <Date day={selectedQuest.dateSelected} />
+          </p>
+        )}
+
         {selectedQuest.notes && <QuestNotes notes={selectedQuest.notes} />}
         {hasLocation && (
           <>
