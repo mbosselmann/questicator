@@ -44,7 +44,12 @@ export default function SolvedQuests() {
                 .filter(
                   (quest) => formatDate(quest.dateFinished, "display") === date
                 )
-                .sort((a, b) => b.dateFinished - a.dateFinished)}
+                .sort((a, b) => {
+                  return (
+                    new Date(a.dateFinished).getTime() -
+                    new Date(b.dateFinished).getTime()
+                  );
+                })}
               displayCheckbox
             />
           </Fragment>
