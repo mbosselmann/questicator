@@ -32,7 +32,7 @@ export default function questsReducer(state, action) {
               ? {
                   ...quest,
                   isDone: true,
-                  dateFinished: new Date().toDateString(),
+                  dateFinished: new Date().toString(),
                 }
               : { ...quest, isDone: false, dateFinished: null };
           }
@@ -74,7 +74,7 @@ export default function questsReducer(state, action) {
           ),
           quests: state.quests.map((quest) =>
             quest.id === action.questId
-              ? { ...quest, dateSelected: new Date().toDateString() }
+              ? { ...quest, dateSelected: new Date().toString() }
               : quest
           ),
         };
@@ -83,7 +83,7 @@ export default function questsReducer(state, action) {
           chosenQuestIds: [...state.chosenQuestIds, selectedQuest.id],
           quests: state.quests.map((quest) =>
             quest.id === action.questId
-              ? { ...quest, dateSelected: new Date().toDateString() }
+              ? { ...quest, dateSelected: new Date().toString() }
               : quest
           ),
         };

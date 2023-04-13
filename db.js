@@ -22,8 +22,10 @@ export const data = [
       "I hope I can handle this!",
       "Try this out!",
     ],
-    dateSelected: "Thu Apr 11 2023",
-    dateFinished: "Thu Apr 11 2023",
+    dateSelected:
+      "Thu Dec 11 2023 15:16:49 GMT+0200 (Central European Summer Time)",
+    dateFinished:
+      "Thu Dec 11 2022 15:16:49 GMT+0200 (Central European Summer Time)",
   },
   {
     id: "aa32416f-8e03-4325-bc8b-399f7a80512a",
@@ -128,8 +130,10 @@ export const data = [
       latitude: 53.54141893739151,
       longitude: 9.984184442472383,
     },
-    dateSelected: "Thu Apr 11 2023",
-    dateFinished: "Thu Apr 11 2023",
+    dateSelected:
+      "Thu Apr 11 2023 15:16:49 GMT+0200 (Central European Summer Time)",
+    dateFinished:
+      "Thu Apr 11 2022 15:16:49 GMT+0200 (Central European Summer Time)",
   },
   {
     id: "4",

@@ -22,7 +22,7 @@ export function QuestsProvider({ children }) {
     useImmerLocalStorageState("chosenQuestIds", { defaultValue: [] });
 
   const [today, setToday] = useImmerLocalStorageState("today", {
-    defaultValue: new Date().toDateString(),
+    defaultValue: new Date().toString(),
   });
 
   const initialState = useMemo(() => {

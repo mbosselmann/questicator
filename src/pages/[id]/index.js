@@ -69,11 +69,13 @@ export default function QuestDetails() {
         {selectedQuest.dateSelected && (
           <p>
             You selected this quest on <Date day={selectedQuest.dateSelected} />
+            .
           </p>
         )}
         {selectedQuest.dateSelected && selectedQuest.dateFinished && (
           <p>
-            You finished this quest on <Date day={selectedQuest.dateSelected} />
+            You finished this quest on <Date day={selectedQuest.dateFinished} />
+            .
           </p>
         )}
 
