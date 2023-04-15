@@ -5,7 +5,7 @@ import formatQuestData from "@/lib/format/formatQuestData.js";
 import LocationForm from "./LocationForm.js";
 import TextInput from "../components/TextInput.js";
 import Textarea from "../components/Textarea.js";
-import RadioInput from "../components/RadioInput.js";
+import RadioInput from "./RadioInput/RadioInput.js";
 
 import { StyledButton } from "../styles/StyledButton.js";
 import { StyledList } from "@/styles/StyledList.js";

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Radio from "../assets/Icons/Radio.js";
+import Radio from "../../assets/Icons/Radio.js";
 
 const Input = styled.input`
   display: none;
