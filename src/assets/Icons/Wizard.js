@@ -1,6 +1,7 @@
 export default function Wizard() {
   return (
     <svg
+      title="wizard"
       width="250"
       height="250"
       viewBox="0 0 250 250"

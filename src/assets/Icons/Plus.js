@@ -1,6 +1,7 @@
 export default function Plus() {
   return (
     <svg
+      title="plus"
       width="36"
       height="35"
       viewBox="0 0 36 35"

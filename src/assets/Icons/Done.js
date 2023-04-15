@@ -1,6 +1,7 @@
 export default function Done() {
   return (
     <svg
+      title="done"
       width="35"
       height="35"
       viewBox="0 0 250 250"

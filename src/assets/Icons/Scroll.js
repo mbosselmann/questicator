@@ -1,6 +1,7 @@
 export default function Scroll() {
   return (
     <svg
+      title="scroll"
       width="35"
       height="35"
       viewBox="0 0 250 249"

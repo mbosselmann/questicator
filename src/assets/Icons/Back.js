@@ -1,6 +1,7 @@
 export default function Back() {
   return (
     <svg
+      title="back"
       width="20"
       height="20"
       viewBox="0 0 48 55"

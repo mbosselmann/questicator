@@ -1,6 +1,7 @@
 export default function Checked() {
   return (
     <svg
+      title="checked"
       width="30"
       height="30"
       viewBox="0 0 60 60"

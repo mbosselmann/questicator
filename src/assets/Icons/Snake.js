@@ -1,6 +1,7 @@
 export default function Snake() {
   return (
     <svg
+      title="snake"
       width="40"
       height="40"
       viewBox="0 0 293 310"

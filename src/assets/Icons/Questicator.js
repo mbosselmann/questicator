@@ -1,6 +1,7 @@
 export default function Questicator({ width, height }) {
   return (
     <svg
+      title="questicator"
       width={width}
       height={height}
       viewBox="0 0 353 276"

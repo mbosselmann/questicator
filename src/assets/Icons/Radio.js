@@ -1,6 +1,7 @@
 export default function Radio({ isChecked }) {
   return (
     <svg
+      title="radio"
       width="25"
       height="25"
       viewBox="0 0 60 60"

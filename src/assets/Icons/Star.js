@@ -1,6 +1,7 @@
 export default function Star() {
   return (
     <svg
+      title="star"
       width="258"
       height="260"
       viewBox="0 0 258 260"

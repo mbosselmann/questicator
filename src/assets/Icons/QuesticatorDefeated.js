@@ -1,6 +1,7 @@
 export default function QuesticatorDefeated({ width, height }) {
   return (
     <svg
+      title="questicator-defeated"
       width={width}
       height={height}
       viewBox="0 0 433 436"
