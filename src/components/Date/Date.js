@@ -1,5 +1,5 @@
-import { useQuests } from "@/context.js";
-import { formatDate } from "@/lib/format/formatDate.js";
+import { useQuests } from "../../context.js";
+import { formatDate } from "../../lib/format/formatDate.js";
 
 export default function Date({ day = null }) {
   const { today } = useQuests();

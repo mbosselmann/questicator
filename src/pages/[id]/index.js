@@ -9,7 +9,7 @@ import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import QuestNotes from "@/components/QuestNotes.js";
 import { StyledList } from "@/styles/StyledList.js";
-import Date from "@/components/Date.js";
+import Date from "@/components/Date/Date.js";
 
 const Map = dynamic(() => import("@/components/Map.js"), { ssr: false });
 

@@ -3,7 +3,7 @@ import QuesticatorDefeated from "@/assets/Icons/QuesticatorDefeated.js";
 import { Slide } from "@/styles/Slide.js";
 import { FlexWrapper } from "@/styles/FlexWrapper.js";
 import { useQuests } from "@/context.js";
-import Date from "@/components/Date.js";
+import Date from "@/components/Date/Date.js";
 
 export default function UnsolvedQuests() {
   const { selectedQuests } = useQuests();
