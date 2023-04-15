@@ -5,7 +5,7 @@ import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
 import QuestForm from "@/components/QuestForm.js";
 import FormHeader from "@/components/FormHeader.js";
-import BackButton from "@/components/BackButton.js";
+import BackButton from "@/components/BackButton/BackButton.js";
 
 export default function EditQuest() {
   const { quests } = useQuests();

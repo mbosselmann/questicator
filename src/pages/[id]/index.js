@@ -3,7 +3,7 @@ import { useRouter } from "next/router.js";
 import dynamic from "next/dynamic";
 import { useQuests, useQuestsDispatch } from "@/context.js";
 
-import BackButton from "@/components/BackButton.js";
+import BackButton from "@/components/BackButton/BackButton.js";
 import QuestLabels from "@/components/QuestLabels.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";

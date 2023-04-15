@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router.js";
 
-import Back from "../assets/Icons/Back.js";
+import Back from "../../assets/Icons/Back.js";
 
 const Button = styled.button`
   display: flex;

@@ -5,7 +5,7 @@ import { useQuests, useQuestsDispatch } from "@/context.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import Textarea from "@/components/Textarea.js";
 import QuestNotes from "@/components/QuestNotes.js";
-import BackButton from "@/components/BackButton.js";
+import BackButton from "@/components/BackButton/BackButton.js";
 import { StyledForm } from "@/styles/StyledForm.js";
 
 const Wrapper = styled.div`
