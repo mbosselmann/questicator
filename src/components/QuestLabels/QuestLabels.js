@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Cauldron from "../assets/Icons/Cauldron.js";
-import High from "../assets/Icons/High.js";
-import Low from "../assets/Icons/Low.js";
-import Star from "../assets/Icons/Star.js";
-import Wizard from "../assets/Icons/Wizard.js";
+import Cauldron from "../../assets/Icons/Cauldron.js";
+import High from "../../assets/Icons/High.js";
+import Low from "../../assets/Icons/Low.js";
+import Star from "../../assets/Icons/Star.js";
+import Wizard from "../../assets/Icons/Wizard.js";
 
 const LABELS_MAP = {
   practice: <Wizard />,
@@ -29,7 +29,7 @@ const ListItem = styled.li`
   }
 `;
 
-export default function QuestLabels({ labels, size }) {
+export default function QuestLabels({ labels = [], size }) {
   return (
     <List role="list">
       {labels.map(({ id, name }) => (

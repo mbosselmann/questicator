@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import BackButton from "@/components/BackButton/BackButton.js";
-import QuestLabels from "@/components/QuestLabels.js";
+import QuestLabels from "@/components/QuestLabels/QuestLabels.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import QuestNotes from "@/components/QuestNotes.js";
