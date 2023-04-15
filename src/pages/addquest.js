@@ -5,7 +5,7 @@ import styled from "styled-components";
 import QuestForm from "@/components/QuestForm.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import { StyledLink } from "@/styles/StyledLink.js";
-import FormHeader from "@/components/FormHeader.js";
+import FormHeader from "@/components/FormHeader/FormHeader.js";
 import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
 const Wrapper = styled.div`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import QuestLabels from "./QuestLabels.js";
-import { StyledTitle } from "@/styles/StyledTitle.js";
+import QuestLabels from "../QuestLabels/QuestLabels.js";
+import { StyledTitle } from "../../styles/StyledTitle.js";
 
 const Header = styled.header`
   height: 3rem;
