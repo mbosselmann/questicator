@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CheckboxForm from "./CheckboxForm.js";
-import React from "react";
 
 test("renders component with correct icon", () => {
   render(<CheckboxForm />);
