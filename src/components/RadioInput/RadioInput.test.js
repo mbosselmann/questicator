@@ -21,7 +21,16 @@ test("checkbox is initially unchecked", () => {
 });
 
 test("checkbox is checked if isChecked is true", () => {
-  render(<RadioInput id="1" labelText="practice" isChecked={true} />);
+  const mockOnChange = jest.fn();
+
+  render(
+    <RadioInput
+      id="1"
+      labelText="practice"
+      onChange={mockOnChange}
+      isChecked={true}
+    />
+  );
 
   const radioInput = screen.getByLabelText("practice");
   expect(radioInput).toBeChecked();
