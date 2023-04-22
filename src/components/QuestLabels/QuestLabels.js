@@ -32,11 +32,13 @@ const ListItem = styled.li`
 export default function QuestLabels({ labels = [], size }) {
   return (
     <List role="list">
-      {labels.map(({ id, name }) => (
-        <ListItem key={id} size={size}>
-          {LABELS_MAP[name]}
-        </ListItem>
-      ))}
+      {labels.map(({ id, name }) =>
+        name !== "none" ? (
+          <ListItem key={id} size={size}>
+            {LABELS_MAP[name]}
+          </ListItem>
+        ) : null
+      )}
     </List>
   );
 }
