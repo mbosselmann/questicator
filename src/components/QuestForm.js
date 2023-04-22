@@ -2,7 +2,7 @@ import { useState } from "react";
 import getLongitudeLatitude from "@/lib/services/getLongitudeLatitude.js";
 import formatQuestData from "@/lib/format/formatQuestData.js";
 
-import LocationForm from "./LocationForm.js";
+import LocationForm from "./LocationForm/LocationForm.js";
 import TextInput from "../components/TextInput.js";
 import Textarea from "../components/Textarea.js";
 import RadioInput from "./RadioInput/RadioInput.js";
@@ -163,7 +163,7 @@ export default function QuestForm({
       </StyledButton>
       {isLocationFormDisplayed && (
         <LocationForm
-          location={selectedQuest.location}
+          location={selectedQuest ? selectedQuest.location : null}
           isLocationFormDisplayed={isLocationFormDisplayed}
         />
       )}
