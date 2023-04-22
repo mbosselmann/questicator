@@ -3,7 +3,7 @@ import getLongitudeLatitude from "@/lib/services/getLongitudeLatitude.js";
 import formatQuestData from "@/lib/format/formatQuestData.js";
 
 import LocationForm from "./LocationForm/LocationForm.js";
-import TextInput from "../components/TextInput.js";
+import TextInput from "./TextInput/TextInput.js";
 import Textarea from "../components/Textarea.js";
 import RadioInput from "./RadioInput/RadioInput.js";
 

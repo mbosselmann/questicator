@@ -1,4 +1,4 @@
-import TextInput from "../TextInput.js";
+import TextInput from "../TextInput/TextInput.js";
 import { StyledFieldset } from "../../styles/StyledFieldset.js";
 
 export default function LocationForm({ location }) {
