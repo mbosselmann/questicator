@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import QuestList from "@/components/QuestList/QuestList.js";
+import QuestList from "@/components/QuestList/index.js";
 import { useQuests } from "@/context.js";
 import { formatDate } from "@/lib/format/formatDate.js";
 

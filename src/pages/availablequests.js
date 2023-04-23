@@ -1,4 +1,4 @@
-import QuestList from "@/components/QuestList/QuestList.js";
+import QuestList from "@/components/QuestList/index.js";
 import { useQuests } from "@/context.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import styled from "styled-components";

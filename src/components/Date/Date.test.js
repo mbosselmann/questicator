@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Date from "./Date.js";
+import Date from "./index.js";
 
 jest.mock("../../context.js", () => ({
   useQuests: jest.fn(() => ({

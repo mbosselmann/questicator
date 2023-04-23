@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import QuestLabels from "../QuestLabels/QuestLabels.js";
+import QuestLabels from "../QuestLabels/index.js";
 import { StyledTitle } from "../../styles/StyledTitle.js";
 
 const Header = styled.header`

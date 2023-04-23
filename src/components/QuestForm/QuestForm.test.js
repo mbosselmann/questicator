@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import QuestForm from "./QuestForm.js";
+import QuestForm from "./index.js";
 
 jest.mock("../../lib/services/getLongitudeLatitude.js", () => {
   return jest.fn(() => {

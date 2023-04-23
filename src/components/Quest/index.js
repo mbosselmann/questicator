@@ -1,7 +1,7 @@
 import Link from "next/link.js";
 import styled from "styled-components";
-import CheckboxForm from "../CheckboxForm/CheckboxForm.js";
-import QuestLabels from "../QuestLabels/QuestLabels.js";
+import CheckboxForm from "../CheckboxForm/index.js";
+import QuestLabels from "../QuestLabels/index.js";
 import { ScreenReaderOnly } from "../../styles/ScreenReaderOnly.js";
 import { StyledButton } from "../../styles/StyledButton.js";
 import { useQuestsDispatch } from "../../context.js";

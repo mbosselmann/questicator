@@ -2,7 +2,7 @@ import { useRouter } from "next/router.js";
 import { useQuests, useQuestsDispatch } from "@/context.js";
 import getLongitudeLatitude from "@/lib/services/getLongitudeLatitude.js";
 
-import LocationForm from "@/components/LocationForm/LocationForm.js";
+import LocationForm from "@/components/LocationForm/index.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import { StyledForm } from "@/styles/StyledForm.js";
 import { StyledTitle } from "@/styles/StyledTitle.js";

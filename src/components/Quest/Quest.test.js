@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Quest from "./Quest.js";
+import Quest from "./index.js";
 
 jest.mock("../../context.js", () => ({
   useQuestsDispatch: () => {

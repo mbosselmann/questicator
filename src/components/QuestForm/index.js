@@ -2,10 +2,10 @@ import { useState } from "react";
 import getLongitudeLatitude from "../../lib/services/getLongitudeLatitude.js";
 import formatQuestData from "../../lib/format/formatQuestData.js";
 
-import LocationForm from "../LocationForm/LocationForm.js";
-import TextInput from "../TextInput/TextInput.js";
-import Textarea from "../Textarea/Textarea.js";
-import RadioInput from "../RadioInput/RadioInput.js";
+import LocationForm from "../LocationForm/index.js";
+import TextInput from "../TextInput/index.js";
+import Textarea from "../Textarea/index.js";
+import RadioInput from "../RadioInput/index.js";
 
 import { StyledButton } from "../../styles/StyledButton.js";
 import { StyledList } from "../../styles/StyledList.js";

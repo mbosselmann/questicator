@@ -3,9 +3,9 @@ import { useRouter } from "next/router.js";
 import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import { StyledButton } from "@/styles/StyledButton.js";
-import Textarea from "@/components/Textarea/Textarea.js";
-import QuestNotes from "@/components/QuestNotes/QuestNotes.js";
-import BackButton from "@/components/BackButton/BackButton.js";
+import Textarea from "@/components/Textarea/index.js";
+import QuestNotes from "@/components/QuestNotes/index.js";
+import BackButton from "@/components/BackButton/index.js";
 import { StyledForm } from "@/styles/StyledForm.js";
 
 const Wrapper = styled.div`

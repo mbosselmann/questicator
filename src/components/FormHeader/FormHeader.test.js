@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import FormHeader from "./FormHeader.js";
+import FormHeader from "./index.js";
 
 const exampleQuestLabels = [
   { id: "1", name: "protect" },

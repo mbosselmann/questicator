@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import LocationForm from "./LocationForm.js";
+import LocationForm from "./index.js";
 
 test("renders location form with a legend, five inputs and labels", () => {
   render(<LocationForm />);

@@ -1,9 +1,9 @@
-import QuestList from "@/components/QuestList/QuestList.js";
+import QuestList from "@/components/QuestList/index.js";
 import QuesticatorDefeated from "@/assets/Icons/QuesticatorDefeated.js";
 import { Slide } from "@/styles/Slide.js";
 import { FlexWrapper } from "@/styles/FlexWrapper.js";
 import { useQuests } from "@/context.js";
-import Date from "@/components/Date/Date.js";
+import Date from "@/components/Date/index.js";
 
 export default function UnsolvedQuests() {
   const { selectedQuests } = useQuests();

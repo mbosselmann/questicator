@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import QuestLabels from "./QuestLabels.js";
+import QuestLabels from "./index.js";
 
 const exampleQuestLabels = [
   { id: "1", name: "protect" },

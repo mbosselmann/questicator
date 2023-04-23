@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import TextInput from "./TextInput.js";
+import TextInput from "./index.js";
 
 test("renders text input with a label and an input", () => {
   render(<TextInput labelText="Name" id={"name"} type={"text"} />);

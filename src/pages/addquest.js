@@ -2,10 +2,10 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 
-import QuestForm from "@/components/QuestForm/QuestForm.js";
+import QuestForm from "@/components/QuestForm/index.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import { StyledLink } from "@/styles/StyledLink.js";
-import FormHeader from "@/components/FormHeader/FormHeader.js";
+import FormHeader from "@/components/FormHeader/index.js";
 import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
 const Wrapper = styled.div`

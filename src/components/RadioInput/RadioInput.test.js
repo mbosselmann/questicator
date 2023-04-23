@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import RadioInput from "./RadioInput.js";
+import RadioInput from "./index.js";
 
 test("renders component", () => {
   render(<RadioInput id="1" value={false} labelText="practice" />);

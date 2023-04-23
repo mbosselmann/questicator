@@ -3,13 +3,13 @@ import { useRouter } from "next/router.js";
 import dynamic from "next/dynamic";
 import { useQuests, useQuestsDispatch } from "@/context.js";
 
-import BackButton from "@/components/BackButton/BackButton.js";
-import QuestLabels from "@/components/QuestLabels/QuestLabels.js";
+import BackButton from "@/components/BackButton/index.js";
+import QuestLabels from "@/components/QuestLabels/index.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";
-import QuestNotes from "@/components/QuestNotes/QuestNotes.js";
+import QuestNotes from "@/components/QuestNotes/index.js";
 import { StyledList } from "@/styles/StyledList.js";
-import Date from "@/components/Date/Date.js";
+import Date from "@/components/Date/index.js";
 
 const Map = dynamic(() => import("@/components/Map.js"), { ssr: false });
 

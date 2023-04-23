@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router.js";
 
-import Navigation from "../components/Navigation/Navigation.js";
+import Navigation from "../components/Navigation/index.js";
 
 const cabinSketch = Cabin_Sketch({ subsets: ["latin"], weight: "400" });
 

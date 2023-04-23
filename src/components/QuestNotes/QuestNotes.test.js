@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import QuestNotes from "./QuestNotes.js";
+import QuestNotes from "./index.js";
 
 test("renders notes and heading", () => {
   const notes = ["Amazing!", "I need to investigate this further..."];

@@ -3,9 +3,9 @@ import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
-import QuestForm from "@/components/QuestForm/QuestForm.js";
-import FormHeader from "@/components/FormHeader/FormHeader.js";
-import BackButton from "@/components/BackButton/BackButton.js";
+import QuestForm from "@/components/QuestForm/index.js";
+import FormHeader from "@/components/FormHeader/index.js";
+import BackButton from "@/components/BackButton/index.js";
 
 export default function EditQuest() {
   const { quests } = useQuests();

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Textarea from "./Textarea.js";
+import Textarea from "./index.js";
 
 test("renders a label and a textarea without a default value if no default value is provided", () => {
   render(

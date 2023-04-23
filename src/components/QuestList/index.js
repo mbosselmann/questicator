@@ -1,4 +1,4 @@
-import Quest from "../Quest/Quest.js";
+import Quest from "../Quest/index.js";
 import { StyledList } from "../../styles/StyledList.js";
 
 export default function QuestList({
