@@ -83,3 +83,12 @@ test("checks if every link has a screen reader only text", () => {
     "border-width": "0",
   });
 });
+
+test("checks if the first link is active", () => {
+  render(<Navigation />);
+
+  const selectQuestsLink = screen.getByRole("link", { name: "Select quests" });
+  expect(selectQuestsLink).toHaveStyle({
+    "background-color": "var(--light-bg-color)",
+  });
+});
