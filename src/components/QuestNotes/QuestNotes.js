@@ -1,4 +1,4 @@
-import { StyledList } from "@/styles/StyledList.js";
+import { StyledList } from "../../styles/StyledList.js";
 
 export default function QuestNotes({ notes }) {
   return (

@@ -7,7 +7,7 @@ import BackButton from "@/components/BackButton/BackButton.js";
 import QuestLabels from "@/components/QuestLabels/QuestLabels.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import { StyledButton } from "@/styles/StyledButton.js";
-import QuestNotes from "@/components/QuestNotes.js";
+import QuestNotes from "@/components/QuestNotes/QuestNotes.js";
 import { StyledList } from "@/styles/StyledList.js";
 import Date from "@/components/Date/Date.js";
 
