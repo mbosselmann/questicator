@@ -1,6 +1,5 @@
-import Quest from "@/components/Quest/Quest.js";
-import { useQuests } from "@/context.js";
-import { StyledList } from "@/styles/StyledList.js";
+import Quest from "../Quest/Quest.js";
+import { StyledList } from "../../styles/StyledList.js";
 
 export default function QuestList({
   quests,

@@ -1,4 +1,4 @@
-import QuestList from "@/components/QuestList.js";
+import QuestList from "@/components/QuestList/QuestList.js";
 import QuesticatorDefeated from "@/assets/Icons/QuesticatorDefeated.js";
 import { Slide } from "@/styles/Slide.js";
 import { FlexWrapper } from "@/styles/FlexWrapper.js";
