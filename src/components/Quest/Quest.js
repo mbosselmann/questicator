@@ -85,7 +85,6 @@ export default function Quest({
               onClick={() =>
                 dispatch({ type: "updateChosenQuestIds", questId: id })
               }
-              disabled={!isSelected && chosenQuestIdsLength >= 3}
             >
               {isSelected ? "Remove" : "Select"}
             </StyledButton>
