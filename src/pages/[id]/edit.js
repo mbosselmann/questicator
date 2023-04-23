@@ -3,7 +3,7 @@ import { useQuests, useQuestsDispatch } from "@/context.js";
 
 import useQuestLabels from "@/lib/hooks/useQuestLabels.js";
 
-import QuestForm from "@/components/QuestForm.js";
+import QuestForm from "@/components/QuestForm/QuestForm.js";
 import FormHeader from "@/components/FormHeader/FormHeader.js";
 import BackButton from "@/components/BackButton/BackButton.js";
 
@@ -18,6 +18,8 @@ export default function EditQuest() {
   const [questLabels, handleQuestLabels] = useQuestLabels(
     selectedQuest?.labels
   );
+
+  const editQuestId = "edit-quest-form";
 
   if (!selectedQuest) {
     return null;
@@ -40,11 +42,13 @@ export default function EditQuest() {
       <FormHeader
         title="Add a Quest"
         questLabels={questLabels || selectedQuest.labels}
+        ariaLabelledbyId={editQuestId}
       />
       <QuestForm
         onSubmit={onSubmit}
         onDisplayQuestLabels={handleQuestLabels}
         selectedQuest={selectedQuest}
+        ariaLabelledbyId={editQuestId}
       />
     </>
   );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 
-import QuestForm from "@/components/QuestForm.js";
+import QuestForm from "@/components/QuestForm/QuestForm.js";
 import { StyledButton } from "@/styles/StyledButton.js";
 import { StyledLink } from "@/styles/StyledLink.js";
 import FormHeader from "@/components/FormHeader/FormHeader.js";
@@ -22,6 +22,8 @@ export default function AddQuest({ addQuest }) {
   const [isNewQuestAdded, setIsNewQuestAdded] = useState(false);
   const [newQuestId, setNewQuestId] = useState("");
   const [questLabels, handleQuestLabels] = useQuestLabels();
+
+  const addQuestId = "add-quest-form";
 
   function onSubmit(questData) {
     const newQuest = {
@@ -60,8 +62,13 @@ export default function AddQuest({ addQuest }) {
         </section>
       ) : (
         <>
-          <FormHeader title="Add a Quest" questLabels={questLabels} />
+          <FormHeader
+            title="Add a Quest"
+            questLabels={questLabels}
+            ariaLabelledbyId={addQuestId}
+          />
           <QuestForm
+            ariaLabelledbyId={addQuestId}
             onSubmit={onSubmit}
             onDisplayQuestLabels={handleQuestLabels}
           />

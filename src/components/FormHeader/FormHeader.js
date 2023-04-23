@@ -10,10 +10,10 @@ const Header = styled.header`
   align-items: flex-end;
 `;
 
-export default function FormHeader({ title, questLabels }) {
+export default function FormHeader({ title, questLabels, ariaLabelledbyId }) {
   return (
     <Header>
-      <StyledTitle>{title}</StyledTitle>
+      <StyledTitle id={ariaLabelledbyId}>{title}</StyledTitle>
       {questLabels && <QuestLabels labels={questLabels} size={"3rem"} />}
     </Header>
   );

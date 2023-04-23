@@ -1,21 +1,22 @@
 import { useState } from "react";
-import getLongitudeLatitude from "@/lib/services/getLongitudeLatitude.js";
-import formatQuestData from "@/lib/format/formatQuestData.js";
+import getLongitudeLatitude from "../../lib/services/getLongitudeLatitude.js";
+import formatQuestData from "../../lib/format/formatQuestData.js";
 
-import LocationForm from "./LocationForm/LocationForm.js";
-import TextInput from "./TextInput/TextInput.js";
-import Textarea from "./Textarea/Textarea.js";
-import RadioInput from "./RadioInput/RadioInput.js";
+import LocationForm from "../LocationForm/LocationForm.js";
+import TextInput from "../TextInput/TextInput.js";
+import Textarea from "../Textarea/Textarea.js";
+import RadioInput from "../RadioInput/RadioInput.js";
 
-import { StyledButton } from "../styles/StyledButton.js";
-import { StyledList } from "@/styles/StyledList.js";
-import { StyledForm } from "@/styles/StyledForm.js";
-import { StyledFieldset } from "@/styles/StyledFieldset.js";
+import { StyledButton } from "../../styles/StyledButton.js";
+import { StyledList } from "../../styles/StyledList.js";
+import { StyledForm } from "../../styles/StyledForm.js";
+import { StyledFieldset } from "../../styles/StyledFieldset.js";
 
 export default function QuestForm({
   onSubmit,
   onDisplayQuestLabels,
   selectedQuest,
+  ariaLabelledbyId,
 }) {
   const [selectedKindOfQuest, setSelectedKindOfQuest] = useState(
     selectedQuest?.labels.find(
@@ -61,9 +62,9 @@ export default function QuestForm({
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit} aria-labelledby={ariaLabelledbyId}>
       <StyledFieldset>
-        <legend>Basic Information</legend>
+        <legend>Basic Information:</legend>
         <TextInput
           id="title"
           name="title"
