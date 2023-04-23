@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import Link from "next/link.js";
 import styled from "styled-components";
-import Done from "../assets/Icons/Done.js";
-import Scroll from "../assets/Icons/Scroll.js";
-import { ScreenReaderOnly } from "../styles/ScreenReaderOnly.js";
-import Plus from "../assets/Icons/Plus.js";
-import Snake from "@/assets/Icons/Snake.js";
+import Done from "../../assets/Icons/Done.js";
+import Scroll from "../../assets/Icons/Scroll.js";
+import { ScreenReaderOnly } from "../../styles/ScreenReaderOnly.js";
+import Plus from "../../assets/Icons/Plus.js";
+import Snake from "../../assets/Icons/Snake.js";
 
 const NavBar = styled.nav`
   background-color: var(--dark-bg-color);
@@ -31,7 +31,7 @@ export default function Navigation() {
     <NavBar>
       <StyledLink href="/" active={router.pathname === "/" ? "active" : ""}>
         <Snake />
-        <ScreenReaderOnly>In Progress</ScreenReaderOnly>
+        <ScreenReaderOnly>Select quests</ScreenReaderOnly>
       </StyledLink>
 
       <StyledLink
