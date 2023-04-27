@@ -5,13 +5,18 @@ beforeEach(() => {
 });
 
 test("returns longitude and latitude for valid location", async () => {
-  fetch.mockResponseOnce(
-    JSON.stringify([
-      {
-        lon: 11.558,
-        lat: 48.14,
-      },
-    ])
+  fetch.mockResponseOnce((request) =>
+    request.url ===
+    "https://nominatim.openstreetmap.org/search.php?q=Flughafen%20Hamburg+Flughafenstra%C3%9Fe+1-3+22335+Hamburg&format=jsonv2&limit=1"
+      ? Promise.resolve(
+          JSON.stringify([
+            {
+              lon: 11.558,
+              lat: 48.14,
+            },
+          ])
+        )
+      : Promise.reject(`Invalid URL: ${request.url}`)
   );
 
   const location = {
